@@ -36,7 +36,6 @@ public class Reservation {
     public int getDigitalBill() {
         return digitalBill;
     }
-
     public Date getDate() {
         return date;
     }
