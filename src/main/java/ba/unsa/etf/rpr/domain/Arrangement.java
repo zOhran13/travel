@@ -9,6 +9,7 @@ public class Arrangement {
     private int price;
     private String transportation;
     private Category category;
+    private Reservation reservation;
 
     public int getId() {
         return id;
@@ -62,11 +63,12 @@ public class Arrangement {
     public String toString() {
         return "Arrangement{" +
                 "id=" + id +
-                ", category='" + category + '\'' +
+                ", category='" + category  +
                 ", name=" + name +
                 ", description =" + description +
                 ", price=" +price+
                 ", transportation="+transportation+
+                ", reservations="+reservation+
                 '}';
     }
     @Override
@@ -79,6 +81,6 @@ public class Arrangement {
     }
     @Override
     public int hashCode() {
-        return Objects.hash(id,name, category, description, price, transportation);
+        return Objects.hash(id,name, category, description, price, transportation, reservation);
     }
 }
