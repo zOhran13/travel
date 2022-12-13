@@ -30,6 +30,27 @@ public class ArrangementDaoSQLImpl implements  ArrangementDao{
     }
     @Override
     public Arrangement getById(int id) {
+
+        String query = "SELECT * FROM quotes WHERE id = ?";
+        try {
+            PreparedStatement stmt = this.konekcija.prepareStatement(query);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) { // result set is iterator.
+                Arrangement quote = new Arrangement();
+                quote.setId(rs.getInt("id"));
+                quote.setName(rs.getString("name"));
+                quote.setPrice(rs.getInt("price"));
+                quote.setDescription(rs.getString("description"));
+                quote.setTransportation(rs.getString("transportation"));
+                rs.close();
+                return quote;
+            } else {
+                return null; // if there is no elements in the result set return null
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // poor error handling
+        }
         return null;
     }
 
