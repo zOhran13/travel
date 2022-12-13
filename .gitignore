@@ -1,5 +1,4 @@
 # Project exclude paths
 /target/
 /.idea/
-database.properties
-
+!/src/main/resources/database.properties

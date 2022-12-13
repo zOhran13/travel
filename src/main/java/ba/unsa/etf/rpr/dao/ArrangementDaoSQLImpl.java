@@ -1,10 +1,11 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Arrangement;
+import ba.unsa.etf.rpr.domain.Category;
 
 import java.io.FileReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -49,6 +50,31 @@ public class ArrangementDaoSQLImpl implements  ArrangementDao{
 
     @Override
     public List<Arrangement> getAll() {
+        return null;
+    }
+    @Override
+    public List<Arrangement> searchByCategory(Category category) {
+        String query = "SELECT * FROM quotes WHERE category = ?";
+        try {
+            PreparedStatement stmt = this.konekcija.prepareStatement(query);
+            stmt.setInt(1, category.getId());
+            ResultSet rs = stmt.executeQuery();
+            ArrayList<Arrangement> quoteLista = new ArrayList<>();
+            while (rs.next()) {
+                Arrangement q = new Arrangement();
+                q.setId(rs.getInt(1));
+                q.setName(rs.getString(2));
+                q.setCategory(category);
+                q.setDescription(rs.getString(3));
+                q.setPrice(rs.getInt(4));
+                q.setTransportation(rs.getString(5));
+
+                quoteLista.add(q);
+            }
+            return quoteLista;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }
