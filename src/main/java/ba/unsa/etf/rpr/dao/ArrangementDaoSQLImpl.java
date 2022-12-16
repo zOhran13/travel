@@ -37,19 +37,19 @@ public class ArrangementDaoSQLImpl implements  ArrangementDao{
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) { // result set is iterator.
-                Arrangement quote = new Arrangement();
-                quote.setId(rs.getInt("id"));
-                quote.setName(rs.getString("name"));
-                quote.setPrice(rs.getInt("price"));
-                quote.setDescription(rs.getString("description"));
-                quote.setTransportation(rs.getString("transportation"));
+                Arrangement arrangement = new Arrangement();
+                arrangement.setId(rs.getInt("id"));
+                arrangement.setName(rs.getString("name"));
+                arrangement.setPrice(rs.getInt("price"));
+                arrangement.setDescription(rs.getString("description"));
+                arrangement.setTransportation(rs.getString("transportation"));
                 rs.close();
-                return quote;
+                return arrangement;
             } else {
-                return null; // if there is no elements in the result set return null
+                return null;
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // poor error handling
+            e.printStackTrace();
         }
         return null;
     }
@@ -80,7 +80,7 @@ public class ArrangementDaoSQLImpl implements  ArrangementDao{
             PreparedStatement stmt = this.konekcija.prepareStatement(query);
             stmt.setInt(1, category.getId());
             ResultSet rs = stmt.executeQuery();
-            ArrayList<Arrangement> quoteLista = new ArrayList<>();
+            ArrayList<Arrangement>arrangementsLista = new ArrayList<>();
             while (rs.next()) {
                 Arrangement q = new Arrangement();
                 q.setId(rs.getInt(1));
@@ -90,12 +90,34 @@ public class ArrangementDaoSQLImpl implements  ArrangementDao{
                 q.setPrice(rs.getInt(4));
                 q.setTransportation(rs.getString(5));
 
-                quoteLista.add(q);
+                arrangementsLista.add(q);
             }
-            return quoteLista;
+            return arrangementsLista;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+    public List<Arrangement> searchByName(String name) {
+        String query = "SELECT * FROM quotes WHERE quote LIKE concat('%', ?, '%')";
+        try {
+            PreparedStatement stmt = this.konekcija.prepareStatement(query);
+            stmt.setString(1, name);
+            ResultSet rs = stmt.executeQuery();
+            ArrayList<Arrangement> arrangementsLista = new ArrayList<>();
+            while (rs.next()) {
+                Arrangement q = new Arrangement();
+                q.setId(rs.getInt(1));
+                q.setName(rs.getString(2));
+                //q.setCategory(returnCategoryForId(rs.getInt(4)));
+
+                arrangementsLista.add(q);
+            }
+            return arrangementsLista;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 }
