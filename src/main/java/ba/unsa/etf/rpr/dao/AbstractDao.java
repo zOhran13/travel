@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Arrangement;
 import ba.unsa.etf.rpr.domain.Idable;
+import ba.unsa.etf.rpr.exceptions.ArrangementException;
 
 import java.io.FileReader;
 import java.sql.*;
@@ -28,7 +29,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
 
         }
     }
-    public T getById(int id) {
+    public T getById(int id) throws ArrangementException{
         String query = "SELECT * FROM "+this.nazivTabele+" WHERE id = ?";
         try {
             PreparedStatement stmt = this.konekcija.prepareStatement(query);
@@ -39,23 +40,23 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
                 rs.close();
                 return result;
            }
-//            else {
-//                throw new QuoteException("Object not found");
-//            }
+           else {
+                throw new ArrangementException("Object not found");
+           }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new ArrangementException(e.getMessage(), e);
         }
-        return null;
+
     }
     public Connection getConnection(){
         return this.konekcija;
     }
 
-    public abstract T row2object(ResultSet rs) ;
+    public abstract T row2object(ResultSet rs) throws ArrangementException;
 
     public abstract Map<String, Object> object2row(T object);
 
-    public List<T> getAll()  {
+    public List<T> getAll()  throws ArrangementException{
         String query = "SELECT * FROM "+ nazivTabele;
         List<T> results = new ArrayList<T>();
         try{
@@ -68,23 +69,23 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
             rs.close();
             return results;
         }catch (SQLException e){
-            e.printStackTrace();
+            throw new ArrangementException(e.getMessage(), e);
         }
-        return null;
+
     }
 
-    public void delete(int id) {
+    public void delete(int id) throws ArrangementException{
         String sql = "DELETE FROM "+nazivTabele+" WHERE id = ?";
         try{
             PreparedStatement stmt = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setObject(1, id);
             stmt.executeUpdate();
         }catch (SQLException e){
-            e.printStackTrace();
+            throw new ArrangementException(e.getMessage(), e);
         }
     }
 
-    public T add(T item){
+    public T add(T item) throws ArrangementException{
         Map<String, Object> row = object2row(item);
         //Map.Entry<String, String> columns = prepareInsertParts(row);
 
@@ -110,12 +111,12 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
 
             return item;
         }catch (SQLException e){
-            e.printStackTrace();
+            throw new ArrangementException(e.getMessage(), e);
         }
-        return null;
+
     }
 
-    public T update(T item) {
+    public T update(T item) throws ArrangementException{
         Map<String, Object> row = object2row(item);
         //String updateColumns = prepareUpdateParts(row);
         StringBuilder builder = new StringBuilder();
@@ -137,10 +138,10 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
             stmt.executeUpdate();
             return item;
         }catch (SQLException e){
-            e.printStackTrace();
+            throw new ArrangementException(e.getMessage(), e);
 
         }
-        return null;
+
     }
 
 

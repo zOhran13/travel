@@ -1,39 +1,41 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Category;
+import ba.unsa.etf.rpr.exceptions.ArrangementException;
 
-import java.io.FileReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.util.List;
-import java.util.Properties;
 
-public class CategoryDaoSQLImpl implements CategoryDao{
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-    private Connection konekcija;
+import java.util.Map;
 
-    @Override
-    public Category getById(int id) {
-        return null;
+import java.util.TreeMap;
+
+public class CategoryDaoSQLImpl extends AbstractDao<Category> implements CategoryDao{
+
+    public CategoryDaoSQLImpl() {
+        super("categories");
     }
 
     @Override
-    public Category add(Category item) {
-        return null;
+    public Category row2object(ResultSet rs) throws ArrangementException {
+        try {
+            Category cat = new Category();
+            cat.setId(rs.getInt("id"));
+            cat.setName(rs.getString("name"));
+            return cat;
+        } catch (SQLException e) {
+            throw new ArrangementException(e.getMessage(), e);
+        }
     }
 
     @Override
-    public Category update(Category item) {
-        return null;
+    public Map<String, Object> object2row(Category object) {
+        Map<String, Object> row = new TreeMap<String, Object>();
+        row.put("id", object.getId());
+        row.put("name", object.getName());
+        return row;
     }
 
-    @Override
-    public void delete(int id) {
 
-    }
-
-    @Override
-    public List<Category> getAll() {
-        return null;
-    }
 }

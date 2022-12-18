@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Arrangement;
 import ba.unsa.etf.rpr.domain.Category;
+import ba.unsa.etf.rpr.exceptions.ArrangementException;
 
 import java.io.FileReader;
 import java.sql.*;
@@ -59,16 +60,19 @@ public class ArrangementDaoSQLImpl extends AbstractDao<Arrangement> implements  
 //        return null;
 //    }
 @Override
-public Arrangement row2object(ResultSet rs)  {
+public Arrangement row2object(ResultSet rs)  throws ArrangementException {
     try {
         Arrangement arr = new Arrangement();
         arr.setId(rs.getInt("id"));
         arr.setName(rs.getString("name"));
+        arr.setTransportation(rs.getString("transportation"));
+        arr.setDescription(rs.getString("description"));
+        arr.setPrice(rs.getInt("price"));
         return arr;
     } catch (SQLException e) {
-        e.printStackTrace();
+        throw new ArrangementException(e.getMessage(), e);
     }
-    return null;
+
 }
 
     @Override
@@ -76,6 +80,9 @@ public Arrangement row2object(ResultSet rs)  {
         Map<String, Object> row = new TreeMap<String, Object>();
         row.put("id", object.getId());
         row.put("name", object.getName());
+        row.put("price", object.getPrice());
+        row.put("description", object.getDescription());
+        row.put("transportation", object.getTransportation());
         return row;
     }
 
