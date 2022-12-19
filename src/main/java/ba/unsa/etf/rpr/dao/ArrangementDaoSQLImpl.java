@@ -10,7 +10,7 @@ import java.util.*;
 
 public class ArrangementDaoSQLImpl extends AbstractDao<Arrangement> implements  ArrangementDao {
     public ArrangementDaoSQLImpl() {
-        super("arrangements");
+        super("Arrangements");
     }
 //    @Override
 //    public List<Arrangement> searchByCategory(Category category) {
