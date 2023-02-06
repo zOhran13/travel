@@ -50,28 +50,13 @@ private static void createConnection(){
         return AbstractDao.konekcija;
     }
 
-//    public T getById(int id) throws ArrangementException{
-//        String query = "SELECT * FROM "+this.nazivTabele+" WHERE id = ?";
-//        try {
-//            PreparedStatement stmt = this.konekcija.prepareStatement(query);
-//            stmt.setInt(1, id);
-//            ResultSet rs = stmt.executeQuery();
-//            if (rs.next()) { // result set is iterator.
-//                T result = row2object(rs);
-//                rs.close();
-//                return result;
-//           }
-//           else {
-//                throw new ArrangementException("Object not found");
-//           }
-//        } catch (SQLException e) {
-//            throw new ArrangementException(e.getMessage(), e);
-//        }
-//
-//    }
+
 public T getById(int id) throws ArrangementException {
     return executeQueryUnique("SELECT * FROM "+this.nazivTabele+" WHERE id = ?", new Object[]{id});
 }
+    public List<T> getAll() throws ArrangementException {
+        return executeQuery("SELECT * FROM "+ nazivTabele, null);
+    }
 
 
 
@@ -94,12 +79,12 @@ public T getById(int id) throws ArrangementException {
 
     public T add(T item) throws ArrangementException{
         Map<String, Object> row = object2row(item);
-        //Map.Entry<String, String> columns = prepareInsertParts(row);
+        Map.Entry<String, String> columns = prepareInsertParts(row);
 
         StringBuilder builder = new StringBuilder();
         builder.append("INSERT INTO ").append(nazivTabele);
-        //builder.append(" (").append(columns.getKey()).append(") ");
-        //builder.append("VALUES (").append(columns.getValue()).append(")");
+        builder.append(" (").append(columns.getKey()).append(") ");
+        builder.append("VALUES (").append(columns.getValue()).append(")");
 
         try{
             PreparedStatement stmt = getConnection().prepareStatement(builder.toString(), Statement.RETURN_GENERATED_KEYS);
@@ -125,12 +110,12 @@ public T getById(int id) throws ArrangementException {
 
     public T update(T item) throws ArrangementException{
         Map<String, Object> row = object2row(item);
-        //String updateColumns = prepareUpdateParts(row);
+        String updateColumns = prepareUpdateParts(row);
         StringBuilder builder = new StringBuilder();
         builder.append("UPDATE ")
                 .append(nazivTabele)
                 .append(" SET ")
-                .append(nazivTabele)
+                .append(updateColumns)
                 .append(" WHERE id = ?");
 
         try{
@@ -176,6 +161,37 @@ public T getById(int id) throws ArrangementException {
             throw new ArrangementException("Object not found");
         }
 
+    }
+    private String prepareUpdateParts(Map<String, Object> row){
+        StringBuilder columns = new StringBuilder();
+
+        int counter = 0;
+        for (Map.Entry<String, Object> entry: row.entrySet()) {
+            counter++;
+            if (entry.getKey().equals("id")) continue; //skip update of id due where clause
+            columns.append(entry.getKey()).append("= ?");
+            if (row.size() != counter) {
+                columns.append(",");
+            }
+        }
+        return columns.toString();
+    }
+    private Map.Entry<String, String> prepareInsertParts(Map<String, Object> row){
+        StringBuilder columns = new StringBuilder();
+        StringBuilder questions = new StringBuilder();
+
+        int counter = 0;
+        for (Map.Entry<String, Object> entry: row.entrySet()) {
+            counter++;
+            if (entry.getKey().equals("id")) continue; //skip insertion of id due autoincrement
+            columns.append(entry.getKey());
+            questions.append("?");
+            if (row.size() != counter) {
+                columns.append(",");
+                questions.append(",");
+            }
+        }
+        return new AbstractMap.SimpleEntry<>(columns.toString(), questions.toString());
     }
 
 

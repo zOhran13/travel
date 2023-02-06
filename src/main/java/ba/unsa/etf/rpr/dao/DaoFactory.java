@@ -4,7 +4,7 @@ import ba.unsa.etf.rpr.domain.User;
 
 public class DaoFactory {
     private static final CategoryDao catDao = new CategoryDaoSQLImpl();
-    private static final ArrangementDao arrDao = new ArrangementDaoSQLImpl();
+    private static final ArrangementDao arrDao = ArrangementDaoSQLImpl.getInstance();
     private static final ReservationDao resDao = new ReservationDaoSQLImpl();
     private static final UserDao usDao = new UserDaoSQLImpl();
 
