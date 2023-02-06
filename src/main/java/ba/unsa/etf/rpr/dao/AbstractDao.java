@@ -6,10 +6,11 @@ import ba.unsa.etf.rpr.exceptions.ArrangementException;
 
 import java.io.FileReader;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
+//import java.util.ArrayList;
+//import java.util.List;
+//import java.util.Map;
+//import java.util.Properties;
 
 public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     private static  Connection konekcija = null;
@@ -68,9 +69,9 @@ private static void createConnection(){
 //        }
 //
 //    }
-//public T getById(int id) throws ArrangementException {
-//    return executeQueryUnique("SELECT * FROM "+this.nazivTabele+" WHERE id = ?", new Object[]{id});
-//}
+public T getById(int id) throws ArrangementException {
+    return executeQueryUnique("SELECT * FROM "+this.nazivTabele+" WHERE id = ?", new Object[]{id});
+}
 
 
 
@@ -149,6 +150,34 @@ private static void createConnection(){
         }
 
     }
+    public List<T> executeQuery(String query, Object[] params) throws ArrangementException {
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement(query);
+            if (params != null){
+                for(int i = 1; i <= params.length; i++){
+                    stmt.setObject(i, params[i-1]);
+                }
+            }
+            ResultSet rs = stmt.executeQuery();
+            ArrayList<T> resultList = new ArrayList<>();
+            while (rs.next()) {
+                resultList.add(row2object(rs));
+            }
+            return resultList;
+        } catch (SQLException e) {
+            throw new ArrangementException(e.getMessage(), e);
+        }
+    }
+    public T executeQueryUnique(String query, Object[] params) throws ArrangementException {
+        List<T> result = executeQuery(query, params);
+        if (result != null && result.size() == 1){
+            return result.get(0);
+        }else{
+            throw new ArrangementException("Object not found");
+        }
+
+    }
+
 
 
 }
