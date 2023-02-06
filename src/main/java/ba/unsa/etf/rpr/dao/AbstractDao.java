@@ -12,67 +12,73 @@ import java.util.Map;
 import java.util.Properties;
 
 public abstract class AbstractDao<T extends Idable> implements Dao<T>{
-    private Connection konekcija;
+    private static  Connection konekcija = null;
     private String nazivTabele;
-    public AbstractDao(String nazivTabele){
-        try{
-            this.nazivTabele = nazivTabele;
+    public AbstractDao(String nazivTabele) {
+        this.nazivTabele = nazivTabele;
+        createConnection();
+    }
+
+private static void createConnection(){
+    if(AbstractDao.konekcija==null) {
+        try {
             Properties p = new Properties();
             p.load(ClassLoader.getSystemResource("database.properties").openStream());
             String url = p.getProperty("url");
             String username = p.getProperty("user");
             String password = p.getProperty("password");
-            this.konekcija = DriverManager.getConnection(url, username, password);
-        }catch (Exception e){
-            System.out.println("Neuspjela konekcija na bazu");
+            AbstractDao.konekcija = DriverManager.getConnection(url, username, password);
+        } catch (Exception e) {
             e.printStackTrace();
-
-        }
-    }
-    public T getById(int id) throws ArrangementException{
-        String query = "SELECT * FROM "+this.nazivTabele+" WHERE id = ?";
-        try {
-            PreparedStatement stmt = this.konekcija.prepareStatement(query);
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) { // result set is iterator.
-                T result = row2object(rs);
-                rs.close();
-                return result;
-           }
-           else {
-                throw new ArrangementException("Object not found");
-           }
-        } catch (SQLException e) {
-            throw new ArrangementException(e.getMessage(), e);
+        }finally {
+            Runtime.getRuntime().addShutdownHook(new Thread(){
+                @Override
+                public void run(){
+                    try {
+                        konekcija.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
 
     }
-    public Connection getConnection(){
-        return this.konekcija;
+}
+    public static Connection getConnection(){
+        return AbstractDao.konekcija;
     }
+
+//    public T getById(int id) throws ArrangementException{
+//        String query = "SELECT * FROM "+this.nazivTabele+" WHERE id = ?";
+//        try {
+//            PreparedStatement stmt = this.konekcija.prepareStatement(query);
+//            stmt.setInt(1, id);
+//            ResultSet rs = stmt.executeQuery();
+//            if (rs.next()) { // result set is iterator.
+//                T result = row2object(rs);
+//                rs.close();
+//                return result;
+//           }
+//           else {
+//                throw new ArrangementException("Object not found");
+//           }
+//        } catch (SQLException e) {
+//            throw new ArrangementException(e.getMessage(), e);
+//        }
+//
+//    }
+//public T getById(int id) throws ArrangementException {
+//    return executeQueryUnique("SELECT * FROM "+this.nazivTabele+" WHERE id = ?", new Object[]{id});
+//}
+
+
 
     public abstract T row2object(ResultSet rs) throws ArrangementException;
 
     public abstract Map<String, Object> object2row(T object);
 
-    public List<T> getAll()  throws ArrangementException{
-        String query = "SELECT * FROM "+ nazivTabele;
-        List<T> results = new ArrayList<T>();
-        try{
-            PreparedStatement stmt = getConnection().prepareStatement(query);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()){ // result set is iterator.
-                T object = row2object(rs);
-                results.add(object);
-            }
-            rs.close();
-            return results;
-        }catch (SQLException e){
-            throw new ArrangementException(e.getMessage(), e);
-        }
 
-    }
 
     public void delete(int id) throws ArrangementException{
         String sql = "DELETE FROM "+nazivTabele+" WHERE id = ?";
