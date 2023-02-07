@@ -8,7 +8,7 @@ public class Arrangement implements Idable{
     private String description;
     private int price;
     private String transportation;
-    private Category category;
+
     private Reservation reservation;
 
     public int getId() {
@@ -39,9 +39,6 @@ public class Arrangement implements Idable{
         this.transportation = transportation;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 
     public String getDescription() {
         return description;
@@ -55,15 +52,12 @@ public class Arrangement implements Idable{
         return transportation;
     }
 
-    public Category getCategory() {
-        return category;
-    }
+
 
     @Override
     public String toString() {
         return "Arrangement{" +
                 "id=" + id +
-                ", category='" + category  +
                 ", name=" + name +
                 ", description =" + description +
                 ", price=" +price+
@@ -81,6 +75,6 @@ public class Arrangement implements Idable{
     }
     @Override
     public int hashCode() {
-        return Objects.hash(id,name, category, description, price, transportation, reservation);
+        return Objects.hash(id,name, description, price, transportation, reservation);
     }
 }
