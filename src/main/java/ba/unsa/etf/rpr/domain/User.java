@@ -8,7 +8,17 @@ public class User implements Idable{
     private String surname;
     private String address;
     private String phoneNumber;
-    private String eMail;
+    private String email;
+
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public int getId() {
         return id;
@@ -50,12 +60,12 @@ public class User implements Idable{
         this.phoneNumber = phoneNumber;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getEmail() {
+        return email;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmail(String email) {
+        this.email = email;
     }
     @Override
     public String toString() {
@@ -65,7 +75,8 @@ public class User implements Idable{
                 ", surname" + surname +
                 ", address" +address+
                 ",phoneNumber" +phoneNumber+
-                ",eMail"+eMail+
+                ",eMail"+ email +
+                ",password"+password+
                 ']';
     }
     @Override
@@ -77,7 +88,7 @@ public class User implements Idable{
     }
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, address, phoneNumber, eMail);
+        return Objects.hash(id, name, surname, address, phoneNumber, email,password);
     }
 
 }
