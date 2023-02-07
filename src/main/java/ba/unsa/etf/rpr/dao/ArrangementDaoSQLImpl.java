@@ -1,10 +1,8 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Arrangement;
-import ba.unsa.etf.rpr.domain.Category;
 import ba.unsa.etf.rpr.exceptions.ArrangementException;
 
-import java.io.FileReader;
 import java.sql.*;
 import java.util.*;
 
