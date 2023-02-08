@@ -53,13 +53,47 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
 
     }
 
+//    @Override
+//    public List<User> getAll() {
+//        return null;
+//    }
+//    public User getByEmail(String email) throws ArrangementException{
+//
+//        String query = "SELECT * FROM  users  WHERE email = ?";
+//
+//        try{
+//
+//            PreparedStatement stmt = getConnection().prepareStatement(query);
+//            stmt.setString(1, email);
+//            ResultSet rs = stmt.executeQuery();
+//            if (rs.next()) {
+//                User result = row2object(rs);
+//                rs.close();
+//                return result;
+//            } else {
+//                throw new ArrangementException("User not found");
+//            }
+//        } catch (SQLException e) {
+//            throw new ArrangementException(e.getMessage(), e);
+//        }
+//
+//    }
     @Override
-    public List<User> getAll() {
-        return null;
+    public Map<String, Object> object2row(User object) {
+        Map<String, Object> row = new TreeMap<String, Object>();
+        row.put("id", object.getId());
+        row.put("name", object.getName());
+        row.put("surname", object.getSurname());
+        row.put("address", object.getAddress());
+        row.put("phone_number", object.getPhoneNumber());
+        row.put("email",object.getEmail());
+        row.put("password",object.getPassword());
+        return row;
     }
+   // @Override
     public User getByEmail(String email) throws ArrangementException{
 
-        String query = "SELECT * FROM  users  WHERE email = ?";
+        String query = "SELECT * FROM  User  WHERE email = ?";
 
         try{
 
@@ -77,18 +111,6 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
             throw new ArrangementException(e.getMessage(), e);
         }
 
-    }
-    @Override
-    public Map<String, Object> object2row(User object) {
-        Map<String, Object> row = new TreeMap<String, Object>();
-        row.put("id", object.getId());
-        row.put("name", object.getName());
-        row.put("surname", object.getSurname());
-        row.put("address", object.getAddress());
-        row.put("phone_number", object.getPhoneNumber());
-        row.put("email",object.getEmail());
-        row.put("password",object.getPassword());
-        return row;
     }
 
 

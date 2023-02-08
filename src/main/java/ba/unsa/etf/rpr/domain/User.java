@@ -71,12 +71,12 @@ public class User implements Idable{
     public String toString() {
         return "User[" +
                 "id=" + id +
-                ", name=" + name  +
-                ", surname" + surname +
-                ", address" +address+
-                ",phoneNumber" +phoneNumber+
-                ",eMail"+ email +
-                ",password"+password+
+                ", name= " + name  +
+                ", surname= " + surname +
+                ", address= " +address+
+                ",phoneNumber= " +phoneNumber+
+                ",email= "+ email +
+                ",password= "+password+
                 ']';
     }
     @Override

@@ -7,15 +7,15 @@ import java.sql.*;
 import java.util.*;
 
 public class ArrangementDaoSQLImpl extends AbstractDao<Arrangement> implements  ArrangementDao {
-    private static ArrangementDaoSQLImpl instance = null;
-    private ArrangementDaoSQLImpl() {
+    //private static ArrangementDaoSQLImpl instance = null;
+    public ArrangementDaoSQLImpl() {
         super("Arrangements");
     }
-    public static ArrangementDaoSQLImpl getInstance(){
-        if(instance==null)
-            instance = new ArrangementDaoSQLImpl();
-        return instance;
-    }
+//    public static ArrangementDaoSQLImpl getInstance(){
+//        if(instance==null)
+//            instance = new ArrangementDaoSQLImpl();
+//        return instance;
+//    }
 
 
 @Override
