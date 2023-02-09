@@ -28,22 +28,23 @@ public Button loginBtn;
 
         try {
             System.out.printf("homeuser");
-            u.setPassword(passwordFld.getText());
-            u.setEmail(emailFld.getText());
-           // System.out.println("tralala" +u.getPassword());
-            //(new UserManager()).login(u.getEmail(), u.getPassword());
-            Stage stage1 = (Stage) loginBtn.getScene().getWindow();
-            stage1.close();
-            System.out.println(u);
+            //u.setPassword(passwordFld.getText());
+           // u.setEmail(emailFld.getText());
+            //Stage stage1 = (Stage) loginBtn.getScene().getWindow();
+            //stage1.close();
+           // System.out.println(u);
+            Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/homePage.fxml"));
-            User user = DaoFactory.userDao().getByEmail(u.getEmail());
+            HomePageController cont = new HomePageController();
+            fxmlLoader.setController(cont);
+            //User user = DaoFactory.userDao().getByEmail(u.getEmail());
            //fxmlLoader.setController(new HomePageController(user));
             Parent root = fxmlLoader.load();
-            Stage stage = new Stage();
+
             stage.setTitle("HomePage");
-            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.initStyle(StageStyle.UTILITY);
-            stage.setResizable(false);
+            //stage.setResizable(false);
             stage.show();
 
         }
