@@ -1,10 +1,8 @@
 package ba.unsa.etf.rpr.controllers;
 
-import ba.unsa.etf.rpr.dao.DaoFactory;
-import ba.unsa.etf.rpr.domain.Reservation;
+
 import ba.unsa.etf.rpr.exceptions.ArrangementException;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import ba.unsa.etf.rpr.domain.User;
 import javafx.event.ActionEvent;
@@ -43,22 +41,15 @@ public class ArrReservationController {
 
     }
 
-//    public ArrReservationController(int logged, String nameOfUser){
-//
-//        this.logged = logged;
-//        this.nameOfUser = nameOfUser;
-//    }
 
     public void initialize() {
         String [] des = arrangement.split("About:");
-
         String [] arrangementArray = arrangement.split(" ");
 
         nameId.setText(arrangementArray[1]);
         priceId.setText(arrangementArray[3]);
         desId.setText(des[1]);
-        //System.out.println(logged);
-
+        desId.setWrapText(true);
     }
     public void backToHomePage(ActionEvent actionEvent){
         try {

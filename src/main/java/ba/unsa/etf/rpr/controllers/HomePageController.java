@@ -39,12 +39,6 @@ public class HomePageController {
         this.ime = ime;
 
     }
-//    public HomePageController(int id) {
-//        this.id = id;
-//    }
-
-
-
 
     public void initialize(){
         imeId.setText(ime);
