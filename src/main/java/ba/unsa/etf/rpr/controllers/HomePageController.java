@@ -92,8 +92,9 @@ public class HomePageController {
 
             listaId.refresh();
             listaId.getSelectionModel().select(newSelectedIdx);
-
-            Stage stage = new Stage();
+            Stage stage = (Stage) btnChooseId.getScene().getWindow();
+            stage.close();
+           // Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/arrReservation.fxml"));
 
             ArrReservationController arrReservationController = new ArrReservationController(selectedItem.toString(),ime,id);

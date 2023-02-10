@@ -21,7 +21,6 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
             res.setId(rs.getInt("id"));
             res.setUser(DaoFactory.userDao().getById(rs.getInt("idUser")));
             res.setPayment(rs.getInt("payment"));
-            res.setDigitalBill(rs.getInt("digital_bill"));
             res.setDate(rs.getDate("date"));
            // res.(rs.getInt("price"));
             return res;
@@ -36,7 +35,6 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
         Map<String, Object> row = new TreeMap<String, Object>();
        row.put("id", object.getId());
         row.put("payment", object.getPayment());
-        row.put("digital_bill", object.getDigitalBill());
         row.put("date", object.getDate());
         row.put("idUser", object.getUser().getId());
         return row;

@@ -35,7 +35,9 @@ public Button loginBtn;
             userManager.login(u.getEmail(), u.getPassword());
             String ulogovan = (DaoFactory.userDao().getByEmail(u.getEmail()).getName());
             int ulogovanId = DaoFactory.userDao().getByEmail(u.getEmail()).getId();
-            Stage stage = new Stage();
+
+            Stage stage = (Stage) loginBtn.getScene().getWindow();
+            //stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/homePage.fxml"));
             HomePageController cont = new HomePageController(ulogovan,ulogovanId);
            // HomePageController cont2 = new HomePageController(ulogovanId);

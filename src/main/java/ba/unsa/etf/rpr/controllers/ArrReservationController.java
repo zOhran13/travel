@@ -1,6 +1,8 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.domain.Reservation;
+import ba.unsa.etf.rpr.exceptions.ArrangementException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,7 +27,7 @@ public class ArrReservationController {
     private User user;
     private int logged;
 
-    private Button btnCancelId;
+    public Button btnCancelId;
  private String nameOfUser;
 
  private int id;
@@ -60,9 +62,10 @@ public class ArrReservationController {
     }
     public void backToHomePage(ActionEvent actionEvent){
         try {
-
+            Stage stage = (Stage) btnCancelId.getScene().getWindow();
+            stage.close();
             //String ulogovan = (DaoFactory.userDao().getByEmail(u.getEmail()).getName());
-            Stage stage = new Stage();
+            //Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/homePage.fxml"));
             HomePageController cont = new HomePageController(nameOfUser,id);
 
@@ -82,7 +85,8 @@ public class ArrReservationController {
 
     }
 
-    public void reservationArr(ActionEvent actionEvent) {
+    public void reservationArr(ActionEvent actionEvent) throws ArrangementException {
+        //User user = DaoFactory.userDao().getById(id);
 
 
 

@@ -8,7 +8,6 @@ public class Reservation implements Idable, Serializable {
 
     private int id;
     private int payment;
-    private int digitalBill;
     private Date date;
      private User user;
 
@@ -32,9 +31,7 @@ public class Reservation implements Idable, Serializable {
         this.payment = payment;
     }
 
-    public void setDigitalBill(int digitalBill) {
-        this.digitalBill = digitalBill;
-    }
+
 
     public void setDate(Date date) {
         this.date = date;
@@ -44,9 +41,7 @@ public class Reservation implements Idable, Serializable {
         this.user = user;
     }
 
-    public int getDigitalBill() {
-        return digitalBill;
-    }
+
     public Date getDate() {
         return date;
     }
@@ -54,7 +49,6 @@ public class Reservation implements Idable, Serializable {
         return "Reservation[" +
                 "id=" + id +
                 ", payment=" + payment+
-                ", digitalBill " +digitalBill +
                 ", date" + date+
                 ", user" +user+
                 ']';
@@ -68,7 +62,7 @@ public class Reservation implements Idable, Serializable {
     }
     @Override
     public int hashCode() {
-        return Objects.hash(id, payment, digitalBill, date, user);
+        return Objects.hash(id, payment, date, user);
     }
 
 
