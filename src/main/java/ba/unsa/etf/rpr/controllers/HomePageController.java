@@ -4,6 +4,7 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Arrangement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 
@@ -24,6 +25,7 @@ public Label imeId;
 
 public String ime;
     public ListView listaId;
+    public Button btnChooseId;
 
     public HomePageController(String  ime) {
         this.ime = ime;
@@ -55,4 +57,6 @@ public String ime;
     }
 
 
+    public void chooseArr(ActionEvent actionEvent) {
+    }
 }
