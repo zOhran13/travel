@@ -25,11 +25,11 @@ public class HomePageController {
 
 
 
-public Button btnId;
+    public Button btnId;
 
-public Label imeId;
+    public Label imeId;
 
-public String ime;
+    public String ime;
     public ListView listaId;
     public Button btnChooseId;
     public int id;
@@ -78,8 +78,8 @@ public String ime;
                             ? selectedIdx - 1
                             : selectedIdx;
 
-           // Arrangement arrangement = (Arrangement) listaId.getSelectionModel().getSelectedItem();
-          //  int sendId = listaId.getSelectionModel().
+            // Arrangement arrangement = (Arrangement) listaId.getSelectionModel().getSelectedItem();
+            //  int sendId = listaId.getSelectionModel().
 
 
             listaId.refresh();
@@ -88,7 +88,7 @@ public String ime;
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/arrReservation.fxml"));
 
-           ArrReservationController arrReservationController = new ArrReservationController(selectedItem.toString());
+            ArrReservationController arrReservationController = new ArrReservationController(selectedItem.toString());
 
             fxmlLoader.setController(arrReservationController);
 

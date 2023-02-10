@@ -7,24 +7,24 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="301.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <children>
-      <Label fx:id="nameId" GridPane.columnIndex="1" />
-      <Label text="Ime" />
-      <Label text="Cijena" GridPane.rowIndex="1" />
-      <Label fx:id="priceId" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Label text="Opis: " GridPane.rowIndex="2" />
-      <Label fx:id="desId" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Label text="Rezervisi:" GridPane.rowIndex="3" />
-      <Button fx:id="btnReservation" mnemonicParsing="false" onAction="#reservationArr" text="OK" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-   </children>
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Label fx:id="nameId" GridPane.columnIndex="1" />
+        <Label text="Ime" />
+        <Label text="Cijena" GridPane.rowIndex="1" />
+        <Label fx:id="priceId" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label text="Opis: " GridPane.rowIndex="2" />
+        <Label fx:id="desId" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label text="Rezervisi:" GridPane.rowIndex="3" />
+        <Button fx:id="btnReservation" mnemonicParsing="false" onAction="#reservationArr" text="OK" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    </children>
 </GridPane>

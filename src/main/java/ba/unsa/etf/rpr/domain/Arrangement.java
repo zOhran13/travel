@@ -1,11 +1,12 @@
 package ba.unsa.etf.rpr.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  */
-public class Arrangement implements Idable{
+public class Arrangement implements Idable, Serializable {
     private int id;
     private String arragement;
     private String description;

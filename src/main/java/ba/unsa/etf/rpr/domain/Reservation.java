@@ -1,9 +1,10 @@
 package ba.unsa.etf.rpr.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class Reservation implements Idable{
+public class Reservation implements Idable, Serializable {
 
     private int id;
     private int payment;

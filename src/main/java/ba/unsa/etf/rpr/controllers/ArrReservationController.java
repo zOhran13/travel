@@ -18,16 +18,16 @@ public class ArrReservationController {
 
     }
 
-public void initialize() {
+    public void initialize() {
         String [] des = arrangement.split("About");
 
-       String [] arrangementArray = arrangement.split(" ");
+        String [] arrangementArray = arrangement.split(" ");
 
         nameId.setText(arrangementArray[1]);
         priceId.setText(arrangementArray[3]);
         desId.setText(des[1]);
 
-}
+    }
 
     public void reservationArr(ActionEvent actionEvent) {
 
