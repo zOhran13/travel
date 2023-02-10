@@ -13,9 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
-import java.awt.*;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
@@ -37,14 +34,12 @@ public Button loginBtn;
             int ulogovanId = DaoFactory.userDao().getByEmail(u.getEmail()).getId();
 
             Stage stage = (Stage) loginBtn.getScene().getWindow();
-            //stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/homePage.fxml"));
             HomePageController cont = new HomePageController(ulogovan,ulogovanId);
-           // HomePageController cont2 = new HomePageController(ulogovanId);
+
 
 
             fxmlLoader.setController(cont);
-            //fxmlLoader.setController(cont2);
             stage.setTitle("HomePage");
             stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
