@@ -39,14 +39,10 @@ public Button loginBtn;
             HomePageController cont = new HomePageController(ulogovan);
 
             fxmlLoader.setController(cont);
-            //User user = DaoFactory.userDao().getByEmail(u.getEmail());
-           //fxmlLoader.setController(new HomePageController(user));
-           // Parent root = fxmlLoader.load();
 
             stage.setTitle("HomePage");
             stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-            //stage.initStyle(StageStyle.UTILITY);
-            //stage.setResizable(false);
+
             stage.show();
 
         }
