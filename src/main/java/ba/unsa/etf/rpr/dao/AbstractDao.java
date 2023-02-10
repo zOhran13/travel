@@ -1,16 +1,10 @@
 package ba.unsa.etf.rpr.dao;
 
-import ba.unsa.etf.rpr.domain.Arrangement;
 import ba.unsa.etf.rpr.domain.Idable;
 import ba.unsa.etf.rpr.exceptions.ArrangementException;
-
-import java.io.FileReader;
 import java.sql.*;
 import java.util.*;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Map;
-//import java.util.Properties;
+
 
 public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     private static  Connection konekcija = null;
@@ -19,29 +13,6 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         this.nazivTabele = nazivTabele;
         createConnection();
     }
-//public AbstractDao(String nazivTabele) {
-//    try{
-//        this.nazivTabele = nazivTabele;
-//        Properties p = new Properties();
-//        p.load(ClassLoader.getSystemResource("database.properties").openStream());
-//        String url = p.getProperty("url");
-//        String username = p.getProperty("username");
-//        String password = p.getProperty("password");
-//        this.konekcija = DriverManager.getConnection(url, username, password);
-//    }catch (Exception e){
-//        System.out.println("Connection to database not possible!");
-//        e.printStackTrace();
-//
-//    }
-//}
-
-//    public Connection getConnection(){
-//
-//        return this.konekcija;
-//
-//
-//    }
-
     private static void createConnection(){
         if(AbstractDao.konekcija==null) {
             try {
