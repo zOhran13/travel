@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.domain.Arrangement;
+import ba.unsa.etf.rpr.domain.User;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,12 +11,19 @@ public class ArrReservationController {
     public Label priceId;
     public Label desId;
     public Button btnReservation;
+    private User user;
+    private int logged;
 
-    public String  arrangement;
+
+    private String  arrangement;
 
     public ArrReservationController(String arrangement) {
         this.arrangement = arrangement;
 
+
+    }
+    public ArrReservationController(int logged){
+        this.logged = logged;
     }
 
     public void initialize() {
@@ -31,5 +39,8 @@ public class ArrReservationController {
 
     public void reservationArr(ActionEvent actionEvent) {
 
+
+
     }
+
 }
