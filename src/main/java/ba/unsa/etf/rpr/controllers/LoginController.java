@@ -34,13 +34,15 @@ public Button loginBtn;
             u.setEmail(emailFld.getText());
             userManager.login(u.getEmail(), u.getPassword());
             String ulogovan = (DaoFactory.userDao().getByEmail(u.getEmail()).getName());
-            //int ulogovanId = DaoFactory.userDao().getByEmail(u.getEmail()).getId();
+            int ulogovanId = DaoFactory.userDao().getByEmail(u.getEmail()).getId();
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/homePage.fxml"));
-            HomePageController cont = new HomePageController(ulogovan);
-            //ArrReservationController arrReservationController = new ArrReservationController(ulogovanId,ulogovan);
+            HomePageController cont = new HomePageController(ulogovan,ulogovanId);
+           // HomePageController cont2 = new HomePageController(ulogovanId);
+
 
             fxmlLoader.setController(cont);
+            //fxmlLoader.setController(cont2);
             stage.setTitle("HomePage");
             stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 

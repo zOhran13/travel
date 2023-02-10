@@ -28,15 +28,19 @@ public class ArrReservationController {
     private Button btnCancelId;
  private String nameOfUser;
 
+ private int id;
+
 
 
     private String  arrangement;
 
-    public ArrReservationController(String arrangement,String nameOfUser) {
+    public ArrReservationController(String arrangement,String nameOfUser,int id) {
         this.arrangement = arrangement;
         this.nameOfUser = nameOfUser;
+        this.id = id;
 
     }
+
 //    public ArrReservationController(int logged, String nameOfUser){
 //
 //        this.logged = logged;
@@ -51,7 +55,7 @@ public class ArrReservationController {
         nameId.setText(arrangementArray[1]);
         priceId.setText(arrangementArray[3]);
         desId.setText(des[1]);
-        System.out.println(logged);
+        //System.out.println(logged);
 
     }
     public void backToHomePage(ActionEvent actionEvent){
@@ -60,7 +64,7 @@ public class ArrReservationController {
             //String ulogovan = (DaoFactory.userDao().getByEmail(u.getEmail()).getName());
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/homePage.fxml"));
-            HomePageController cont = new HomePageController(nameOfUser);
+            HomePageController cont = new HomePageController(nameOfUser,id);
 
             fxmlLoader.setController(cont);
 

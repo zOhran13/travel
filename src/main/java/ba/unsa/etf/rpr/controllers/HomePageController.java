@@ -34,13 +34,21 @@ public class HomePageController {
     public Button btnChooseId;
     public int id;
 
-    public HomePageController(String  ime) {
+    public HomePageController(String  ime, int id) {
+
         this.ime = ime;
+
     }
+//    public HomePageController(int id) {
+//        this.id = id;
+//    }
+
+
 
 
     public void initialize(){
         imeId.setText(ime);
+        //System.out.println(id);
 
 
         ObservableList items = FXCollections.observableArrayList();
@@ -88,7 +96,7 @@ public class HomePageController {
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/arrReservation.fxml"));
 
-            ArrReservationController arrReservationController = new ArrReservationController(selectedItem.toString(),ime);
+            ArrReservationController arrReservationController = new ArrReservationController(selectedItem.toString(),ime,id);
 
             fxmlLoader.setController(arrReservationController);
 
