@@ -50,7 +50,7 @@ public class ArrReservationController {
 //    }
 
     public void initialize() {
-        String [] des = arrangement.split("About");
+        String [] des = arrangement.split("About:");
 
         String [] arrangementArray = arrangement.split(" ");
 

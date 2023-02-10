@@ -63,10 +63,6 @@ public class HomePageController {
 
 
                 }
-
-
-
-
                 listaId.setItems(items);
             }
         }catch (Exception e){
@@ -85,10 +81,6 @@ public class HomePageController {
                     (selectedIdx == listaId.getItems().size() - 1)
                             ? selectedIdx - 1
                             : selectedIdx;
-
-            // Arrangement arrangement = (Arrangement) listaId.getSelectionModel().getSelectedItem();
-            //  int sendId = listaId.getSelectionModel().
-
 
             listaId.refresh();
             listaId.getSelectionModel().select(newSelectedIdx);
