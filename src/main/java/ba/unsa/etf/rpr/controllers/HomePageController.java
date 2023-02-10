@@ -58,5 +58,31 @@ public String ime;
 
 
     public void chooseArr(ActionEvent actionEvent) {
+        int selectedIdx = listaId.getSelectionModel().getSelectedIndex();
+        if (selectedIdx != -1) {
+            Object selectedItem = listaId.getSelectionModel().getSelectedItem();
+
+            int newSelectedIdx =
+                    (selectedIdx == listaId.getItems().size() - 1)
+                            ? selectedIdx - 1
+                            : selectedIdx;
+
+            Arrangement arrangement = (Arrangement) listaId.getSelectionModel().getSelectedItem();
+
+//
+//            try {
+//                //DaoFactory.arrangementDao().reservationsForUser(user.getId()).remove(itemToRemove);
+//                String [] index = itemToRemove.toString().split(" ");
+//                int indexToDelete = Integer.parseInt(index[2]);
+//                DaoFactory.reservationsDao().delete(indexToDelete);
+//                System.out.println(itemToRemove);
+//
+//
+//            } catch (HotelException e) {
+//                throw new RuntimeException(e);
+//            }
+            listaId.refresh();
+            listaId.getSelectionModel().select(newSelectedIdx);
+        }
     }
 }
