@@ -9,7 +9,7 @@ import java.util.*;
 public class ArrangementDaoSQLImpl extends AbstractDao<Arrangement> implements  ArrangementDao {
     //private static ArrangementDaoSQLImpl instance = null;
     public ArrangementDaoSQLImpl() {
-        super("Arrangements");
+        super("Arrangement");
     }
 //    public static ArrangementDaoSQLImpl getInstance(){
 //        if(instance==null)
@@ -23,7 +23,7 @@ public Arrangement row2object(ResultSet rs)  throws ArrangementException {
     try {
         Arrangement arr = new Arrangement();
         arr.setId(rs.getInt("id"));
-        arr.setName(rs.getString("name"));
+        arr.setArragement(rs.getString("arrangement"));
         arr.setTransportation(rs.getString("transportation"));
         arr.setDescription(rs.getString("description"));
         arr.setPrice(rs.getInt("price"));
@@ -38,7 +38,7 @@ public Arrangement row2object(ResultSet rs)  throws ArrangementException {
     public Map<String, Object> object2row(Arrangement object) {
         Map<String, Object> row = new TreeMap<String, Object>();
         row.put("id", object.getId());
-        row.put("name", object.getName());
+        row.put("arrangement", object.getArragement());
         row.put("price", object.getPrice());
         row.put("description", object.getDescription());
         row.put("transportation", object.getTransportation());

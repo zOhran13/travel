@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
 
+import ba.unsa.etf.rpr.business.UserManager;
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.User;
 import javafx.event.ActionEvent;
@@ -22,20 +23,21 @@ public class LoginController {
 public Button loginBtn;
     public TextField emailFld;
     public PasswordField passwordFld;
-    //User u = new User();
+    User u = new User();
+    UserManager userManager = new UserManager();
     public void showHomePage(ActionEvent event){
 
 
         try {
 
-            //u.setPassword(passwordFld.getText());
-           // u.setEmail(emailFld.getText());
-            //Stage stage1 = (Stage) loginBtn.getScene().getWindow();
-            //stage1.close();
-           // System.out.println(u);
+            u.setPassword(passwordFld.getText());
+            u.setEmail(emailFld.getText());
+            userManager.login(u.getEmail(), u.getPassword());
+            String ulogovan = (DaoFactory.userDao().getByEmail(u.getEmail()).getName());
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/homePage.fxml"));
-            HomePageController cont = new HomePageController(emailFld.getText());
+            HomePageController cont = new HomePageController(ulogovan);
+
             fxmlLoader.setController(cont);
             //User user = DaoFactory.userDao().getByEmail(u.getEmail());
            //fxmlLoader.setController(new HomePageController(user));

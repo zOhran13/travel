@@ -77,7 +77,20 @@ public T getById(int id) throws ArrangementException {
     return executeQueryUnique("SELECT * FROM "+this.nazivTabele+" WHERE id = ?", new Object[]{id});
 }
     public List<T> getAll() throws ArrangementException {
-        return executeQuery("SELECT * FROM "+ nazivTabele, null);
+        String query = "SELECT * FROM "+ nazivTabele;
+        List<T> results = new ArrayList<T>();
+        try{
+            PreparedStatement stmt = getConnection().prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){ // result set is iterator.
+                T object = row2object(rs);
+                results.add(object);
+            }
+            rs.close();
+            return results;
+        }catch (SQLException e){
+            throw new ArrangementException(e.getMessage(), e);
+        }
     }
 
 

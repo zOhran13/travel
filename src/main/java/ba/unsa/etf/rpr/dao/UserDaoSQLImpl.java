@@ -34,8 +34,22 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
 
 
     @Override
-    public User getById(int id) {
-        return null;
+    public User getById(int id) throws ArrangementException {
+        String query = "SELECT * FROM User WHERE id = ?";
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement(query);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) { // result set is iterator.
+                User result = row2object(rs);
+                rs.close();
+                return result;
+            } else {
+                throw new ArrangementException("Object not found");
+            }
+        } catch (SQLException e) {
+            throw new ArrangementException(e.getMessage(), e);
+        }
     }
 
     @Override

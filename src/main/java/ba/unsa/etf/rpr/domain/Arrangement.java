@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Arrangement implements Idable{
     private int id;
-    private String name;
+    private String arragement;
     private String description;
     private int price;
     private String transportation;
@@ -15,16 +15,16 @@ public class Arrangement implements Idable{
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getArragement() {
+        return arragement;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setArragement(String arragement) {
+        this.arragement = arragement;
     }
 
     public void setDescription(String description) {
@@ -58,7 +58,7 @@ public class Arrangement implements Idable{
     public String toString() {
         return "Arrangement{" +
                 "id=" + id +
-                ", name=" + name +
+                ", arragement=" + arragement +
                 ", description =" + description +
                 ", price=" +price+
                 ", transportation="+transportation+
@@ -75,6 +75,6 @@ public class Arrangement implements Idable{
     }
     @Override
     public int hashCode() {
-        return Objects.hash(id,name, description, price, transportation, reservation);
+        return Objects.hash(id, arragement, description, price, transportation, reservation);
     }
 }
