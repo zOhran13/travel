@@ -10,7 +10,9 @@ public class ArrReservationController {
     public Label nameId;
     public Label priceId;
     public Label desId;
+
     public Button btnReservation;
+
     private User user;
     private int logged;
 
@@ -34,6 +36,7 @@ public class ArrReservationController {
         nameId.setText(arrangementArray[1]);
         priceId.setText(arrangementArray[3]);
         desId.setText(des[1]);
+        System.out.println(logged);
 
     }
 
