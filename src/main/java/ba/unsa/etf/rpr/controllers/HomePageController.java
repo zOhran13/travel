@@ -32,6 +32,7 @@ public Label imeId;
 public String ime;
     public ListView listaId;
     public Button btnChooseId;
+    public int id;
 
     public HomePageController(String  ime) {
         this.ime = ime;
@@ -44,14 +45,18 @@ public String ime;
 
         ObservableList items = FXCollections.observableArrayList();
 
+
         try{
             List<Arrangement> arrangementsList = DaoFactory.arrangementDao().getAll();
             if(!arrangementsList.isEmpty()){
                 for(int i = 0; i < arrangementsList.size(); i++){
+
                     items.add("Where: "+ arrangementsList.get(i).getArragement()+ " "+"Price: " + arrangementsList.get(i).getPrice() + "$ "+"About: " + arrangementsList.get(i).getDescription());
 
+
                 }
-                //System.out.println(items);
+
+
 
 
                 listaId.setItems(items);
@@ -73,26 +78,17 @@ public String ime;
                             ? selectedIdx - 1
                             : selectedIdx;
 
-            Arrangement arrangement = (Arrangement) listaId.getSelectionModel().getSelectedItem();
+           // Arrangement arrangement = (Arrangement) listaId.getSelectionModel().getSelectedItem();
+          //  int sendId = listaId.getSelectionModel().
 
-//
-//            try {
-//                //DaoFactory.arrangementDao().reservationsForUser(user.getId()).remove(itemToRemove);
-//                String [] index = itemToRemove.toString().split(" ");
-//                int indexToDelete = Integer.parseInt(index[2]);
-//                DaoFactory.reservationsDao().delete(indexToDelete);
-//                System.out.println(itemToRemove);
-//
-//
-//            } catch (HotelException e) {
-//                throw new RuntimeException(e);
-//            }
+
             listaId.refresh();
             listaId.getSelectionModel().select(newSelectedIdx);
 
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/arrReservation.fxml"));
-           ArrReservationController arrReservationController = new ArrReservationController(arrangement);
+
+           ArrReservationController arrReservationController = new ArrReservationController(selectedItem.toString());
 
             fxmlLoader.setController(arrReservationController);
 
