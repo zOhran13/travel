@@ -22,12 +22,12 @@ public class LoginController {
 public Button loginBtn;
     public TextField emailFld;
     public PasswordField passwordFld;
-    User u = new User();
+    //User u = new User();
     public void showHomePage(ActionEvent event){
 
 
         try {
-            System.out.printf("homeuser");
+
             //u.setPassword(passwordFld.getText());
            // u.setEmail(emailFld.getText());
             //Stage stage1 = (Stage) loginBtn.getScene().getWindow();
@@ -35,15 +35,15 @@ public Button loginBtn;
            // System.out.println(u);
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/homePage.fxml"));
-            HomePageController cont = new HomePageController();
+            HomePageController cont = new HomePageController(emailFld.getText());
             fxmlLoader.setController(cont);
             //User user = DaoFactory.userDao().getByEmail(u.getEmail());
            //fxmlLoader.setController(new HomePageController(user));
-            Parent root = fxmlLoader.load();
+           // Parent root = fxmlLoader.load();
 
             stage.setTitle("HomePage");
             stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-            stage.initStyle(StageStyle.UTILITY);
+            //stage.initStyle(StageStyle.UTILITY);
             //stage.setResizable(false);
             stage.show();
 
