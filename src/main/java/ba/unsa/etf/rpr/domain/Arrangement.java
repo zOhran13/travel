@@ -2,6 +2,9 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class Arrangement implements Idable{
     private int id;
     private String arragement;

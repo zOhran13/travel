@@ -42,35 +42,6 @@ public AbstractDao(String nazivTabele) {
 
     }
 
-//private static void createConnection(){
-//    if(AbstractDao.konekcija==null) {
-//        try {
-//            Properties p = new Properties();
-//            p.load(ClassLoader.getSystemResource("database.properties").openStream());
-//            String url = p.getProperty("url");
-//            String username = p.getProperty("user");
-//            String password = p.getProperty("password");
-//            AbstractDao.konekcija = DriverManager.getConnection(url, username, password);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }finally {
-//            Runtime.getRuntime().addShutdownHook(new Thread(){
-//                @Override
-//                public void run(){
-//                    try {
-//                        konekcija.close();
-//                    } catch (SQLException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            });
-//        }
-//
-//    }
-//}
-//    public static Connection getConnection(){
-//        return AbstractDao.konekcija;
-//    }
 
 
 public T getById(int id) throws ArrangementException {
