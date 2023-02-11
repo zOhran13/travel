@@ -67,6 +67,19 @@ public class HomePageController {
 
     }
 
+    public void goToProfile(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) btnId.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/profile.fxml"));
+       // HomePageController cont = new HomePageController(ulogovan,ulogovanId);
+        
+        //fxmlLoader.setController(cont);
+        stage.setTitle("HomePage");
+        stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+
+        stage.show();
+
+    }
+
 
     public void chooseArr(ActionEvent actionEvent) throws IOException {
         int selectedIdx = listaId.getSelectionModel().getSelectedIndex();
