@@ -1,8 +1,12 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.domain.Arrangement;
+import ba.unsa.etf.rpr.domain.Reservation;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.ArrangementException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,6 +16,7 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
@@ -43,6 +48,25 @@ public class ProfileController {
         surnameId.setText(userSurname);
         String userNumber = DaoFactory.userDao().getById(id).getPhoneNumber();
         phoneId.setText(userNumber);
+
+        ObservableList items = FXCollections.observableArrayList();
+
+
+        try{
+            List<Reservation> reservationsList = DaoFactory.reservationDao().reservationsForUser(id);
+            if(!reservationsList.isEmpty()){
+                for(int i = 0; i < reservationsList.size(); i++){
+
+                    items.add("Price: "+ reservationsList.get(i).getPayment()+ "Date: "+reservationsList.get(i).getDate());
+
+
+                }
+                listReservationId.setItems(items);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
 
