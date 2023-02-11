@@ -1,9 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
-import ba.unsa.etf.rpr.domain.Arrangement;
 import ba.unsa.etf.rpr.domain.Reservation;
-import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.ArrangementException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -61,8 +59,6 @@ public class ProfileController {
                 for(int i = 0; i < reservationsList.size(); i++){
 
                     items.add(reservationsList.get(i).getId()+" Price: "+ reservationsList.get(i).getPayment()+ "Date: "+reservationsList.get(i).getDate());
-
-
                 }
                 listReservationId.setItems(items);
             }
