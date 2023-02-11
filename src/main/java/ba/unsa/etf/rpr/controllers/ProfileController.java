@@ -27,9 +27,12 @@ public class ProfileController {
     public Label nameId;
     public Button btnBackId;
 
+    public Button btnRemoveId;
+
     public String name;
 
     public int id;
+
 
     public Label surnameId;
 
@@ -57,7 +60,7 @@ public class ProfileController {
             if(!reservationsList.isEmpty()){
                 for(int i = 0; i < reservationsList.size(); i++){
 
-                    items.add("Price: "+ reservationsList.get(i).getPayment()+ "Date: "+reservationsList.get(i).getDate());
+                    items.add(reservationsList.get(i).getId()+" Price: "+ reservationsList.get(i).getPayment()+ "Date: "+reservationsList.get(i).getDate());
 
 
                 }
@@ -68,6 +71,8 @@ public class ProfileController {
         }
 
     }
+
+
 
 
     public void backHome(ActionEvent actionEvent) throws IOException {
@@ -85,5 +90,33 @@ public class ProfileController {
     }
 
     public void removeReservation(ActionEvent actionEvent) {
+
+        int selectedIdx = listReservationId.getSelectionModel().getSelectedIndex();
+        if (selectedIdx != -1) {
+            Object itemToRemove = listReservationId.getSelectionModel().getSelectedItem();
+
+            int newSelectedIdx =
+                    (selectedIdx == listReservationId.getItems().size() - 1)
+                            ? selectedIdx - 1
+                            : selectedIdx;
+
+            listReservationId.getItems().remove(selectedIdx);
+
+            try {
+                DaoFactory.reservationDao().reservationsForUser(id).remove(itemToRemove);
+                String [] index = itemToRemove.toString().split(" ");
+                int indexToDelete = Integer.parseInt(index[0]);
+                DaoFactory.reservationDao().delete(indexToDelete);
+                System.out.println(itemToRemove);
+
+
+            } catch (ArrangementException e) {
+                throw new RuntimeException(e);
+            }
+            listReservationId.refresh();
+            listReservationId.getSelectionModel().select(newSelectedIdx);
+        }
+
+
     }
 }
