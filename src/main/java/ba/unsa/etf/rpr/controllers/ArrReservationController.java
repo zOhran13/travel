@@ -55,7 +55,7 @@ public class ArrReservationController {
         priceId.setText(arrangementArray[3]);
         desId.setText(des[1]);
         desId.setWrapText(true);
-        System.out.println(id);
+        //System.out.println(id);
 
     }
 
@@ -95,8 +95,16 @@ public class ArrReservationController {
             reservation.setDate(date);
             reservation.setUser(user);
             DaoFactory.reservationDao().add(reservation);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Reservation");
+            alert.setHeaderText("Results:");
+            alert.setContentText("Thank you for reservation! See you soon!");
 
-        }catch (ArrangementException e) {
+            alert.showAndWait();
+
+
+
+        }catch (ArrangementException  e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
