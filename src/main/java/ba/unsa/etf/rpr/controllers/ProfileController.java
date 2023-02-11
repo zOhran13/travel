@@ -80,7 +80,7 @@ public class ProfileController {
         fxmlLoader.setController(cont);
         stage.setTitle("HomePage");
         stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-
+        stage.setResizable(false);
         stage.show();
 
     }

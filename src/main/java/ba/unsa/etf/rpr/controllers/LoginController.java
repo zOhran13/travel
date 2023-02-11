@@ -43,7 +43,7 @@ public Button loginBtn;
             fxmlLoader.setController(cont);
             stage.setTitle("HomePage");
             stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-
+            stage.setResizable(false);
             stage.show();
 
         }
@@ -60,7 +60,7 @@ public Button loginBtn;
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/registration.fxml"));
             stage.setTitle("Registration");
             stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-
+            stage.setResizable(false);
             stage.show();
 
         }

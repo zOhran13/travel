@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
 
+import ba.unsa.etf.rpr.domain.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,12 +16,15 @@ import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 public class RegistrationController {
     
     public Button btnCancelId;
+
     public Button btnOkId;
     public TextField nameId;
     public TextField surnameId;
     public TextField phoneId;
     public TextField emailId;
     public TextField addressId;
+
+    public TextField passwordId;
 
     public void backToLogin(ActionEvent actionEvent) {
         try{
@@ -40,5 +44,14 @@ public class RegistrationController {
     }
 
     public void registrationForUser(ActionEvent actionEvent) {
+        User u = new User();
+        u.setName(nameId.getText());
+        u.setSurname(surnameId.getText());
+        u.setAddress(addressId.getText());
+        u.setPhoneNumber(phoneId.getText());
+        u.setPassword(passwordId.getText());
+        u.setEmail(emailId.getText());
+
+
     }
 }

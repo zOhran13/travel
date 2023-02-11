@@ -74,7 +74,7 @@ public class HomePageController {
         fxmlLoader.setController(cont);
         stage.setTitle("Profile");
         stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-
+        stage.setResizable(false);
         stage.show();
 
     }
@@ -104,7 +104,7 @@ public class HomePageController {
 
             stage.setTitle("Reservation");
             stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-
+            stage.setResizable(false);
             stage.show();
             System.out.println(id);
 
