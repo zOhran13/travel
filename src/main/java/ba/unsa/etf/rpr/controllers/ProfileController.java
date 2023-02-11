@@ -1,5 +1,8 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.domain.User;
+import ba.unsa.etf.rpr.exceptions.ArrangementException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,9 +26,23 @@ public class ProfileController {
 
     public int id;
 
+    public Label surnameId;
+
+    public Label phoneId;
+
+
+
     public ProfileController(String name, int id) {
         this.name = name;
         this.id = id;
+    }
+
+    public void initialize() throws ArrangementException {
+        nameId.setText(name);
+        String userSurname = DaoFactory.userDao().getById(id).getSurname();
+        surnameId.setText(userSurname);
+        String userNumber = DaoFactory.userDao().getById(id).getPhoneNumber();
+        phoneId.setText(userNumber);
     }
 
 
