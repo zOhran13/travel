@@ -42,7 +42,7 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
 
     public  List<Reservation> reservationsForUser(int userId) throws ArrangementException {
         List<Reservation> reservationsForUser = new ArrayList<>();
-        String query = "SELECT * FROM reservations WHERE user_id = ?";
+        String query = "SELECT * FROM Reservation WHERE idUser = ?";
         try{
             PreparedStatement stmt = getConnection().prepareStatement(query);
             stmt.setInt(1,userId);
@@ -60,6 +60,7 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
         return reservationsForUser;
 
     }
+
 
 
 }
