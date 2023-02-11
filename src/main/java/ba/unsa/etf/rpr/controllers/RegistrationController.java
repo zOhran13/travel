@@ -7,18 +7,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class RegistrationController {
-    public Label nameId;
-    public Label surnameId;
-    public Label addressId;
-    public Label phoneId;
-    public Label mailId;
+    
     public Button btnCancelId;
     public Button btnOkId;
+    public TextField nameId;
+    public TextField surnameId;
+    public TextField phoneId;
+    public TextField emailId;
+    public TextField addressId;
 
     public void backToLogin(ActionEvent actionEvent) {
         try{

@@ -20,6 +20,7 @@ public class LoginController {
 public Button loginBtn;
     public TextField emailFld;
     public PasswordField passwordFld;
+    public Button signUpId;
     User u = new User();
     UserManager userManager = new UserManager();
     public void showHomePage(ActionEvent event){
@@ -51,5 +52,23 @@ public Button loginBtn;
 
 
         }
+    }
+
+    public void register(ActionEvent actionEvent) {
+        try {
+            Stage stage = (Stage) signUpId.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/registration.fxml"));
+            stage.setTitle("Registration");
+            stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+
+            stage.show();
+
+        }
+        catch (Exception e){
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+
+
+        }
+
     }
 }
