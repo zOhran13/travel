@@ -32,11 +32,13 @@ public class HomePageController {
     public String ime;
     public ListView listaId;
     public Button btnChooseId;
+
     public int id;
 
     public HomePageController(String  ime, int id) {
 
         this.ime = ime;
+        this.id = id;
 
     }
 
@@ -91,6 +93,7 @@ public class HomePageController {
             stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
             stage.show();
+            System.out.println(id);
 
         }
     }

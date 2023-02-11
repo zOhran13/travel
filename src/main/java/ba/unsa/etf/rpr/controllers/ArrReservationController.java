@@ -1,6 +1,9 @@
 package ba.unsa.etf.rpr.controllers;
 
 
+import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.dao.ReservationDao;
+import ba.unsa.etf.rpr.domain.Reservation;
 import ba.unsa.etf.rpr.exceptions.ArrangementException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,7 +26,9 @@ public class ArrReservationController {
     public Button btnReservation;
 
     private User user;
+
     private int logged;
+    public int price = 0 ;
 
     public Button btnCancelId;
  private String nameOfUser;
@@ -50,7 +55,10 @@ public class ArrReservationController {
         priceId.setText(arrangementArray[3]);
         desId.setText(des[1]);
         desId.setWrapText(true);
+        System.out.println(id);
+
     }
+
     public void backToHomePage(ActionEvent actionEvent){
         try {
             Stage stage = (Stage) btnCancelId.getScene().getWindow();
@@ -66,6 +74,7 @@ public class ArrReservationController {
             stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
             stage.show();
+            System.out.println(id);
 
         }
         catch (Exception e){
@@ -77,7 +86,19 @@ public class ArrReservationController {
     }
 
     public void reservationArr(ActionEvent actionEvent) throws ArrangementException {
-        //User user = DaoFactory.userDao().getById(id);
+        User user = DaoFactory.userDao().getById(id);
+        try {
+            java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
+            Reservation reservation = new Reservation();
+            reservation.setId(1);
+            reservation.setPayment(price);
+            reservation.setDate(date);
+            reservation.setUser(user);
+            DaoFactory.reservationDao().add(reservation);
+
+        }catch (ArrangementException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
 
 
 
