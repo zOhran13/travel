@@ -58,6 +58,8 @@ public Button loginBtn;
         try {
             Stage stage = (Stage) signUpId.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/registration.fxml"));
+            RegistrationController registrationController = new RegistrationController();
+            fxmlLoader.setController(registrationController);
             stage.setTitle("Registration");
             stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.setResizable(false);

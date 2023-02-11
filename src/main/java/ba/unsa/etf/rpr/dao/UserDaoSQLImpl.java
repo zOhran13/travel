@@ -52,10 +52,7 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
         }
     }
 
-    @Override
-    public User add(User item) {
-        return null;
-    }
+
 
     @Override
     public User update(User item) {

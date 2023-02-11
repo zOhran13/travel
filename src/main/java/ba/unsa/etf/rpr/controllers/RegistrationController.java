@@ -59,7 +59,7 @@ public class RegistrationController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Registration");
             alert.setHeaderText("Results:");
-            alert.setContentText("Thank you for registration! Please sign in");
+            alert.setContentText("Thank you for registration! Please sign in.");
             alert.showAndWait();
 
             Stage stage = (Stage) btnOkId.getScene().getWindow();
