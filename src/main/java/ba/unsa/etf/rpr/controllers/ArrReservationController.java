@@ -28,7 +28,7 @@ public class ArrReservationController {
     private User user;
 
     private int logged;
-    public int price = 0 ;
+    public int price;
 
     public Button btnCancelId;
  private String nameOfUser;
@@ -74,7 +74,8 @@ public class ArrReservationController {
             stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
 
             stage.show();
-            System.out.println(id);
+
+           // System.out.println(newArray[0]);
 
         }
         catch (Exception e){
@@ -87,6 +88,9 @@ public class ArrReservationController {
 
     public void reservationArr(ActionEvent actionEvent) throws ArrangementException {
         User user = DaoFactory.userDao().getById(id);
+        String [] arrangementArray = arrangement.split(" ");
+        String [] newArray =  arrangementArray[3].split("[$]");
+        price = Integer.parseInt(newArray[0]);
         try {
             java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
             Reservation reservation = new Reservation();
