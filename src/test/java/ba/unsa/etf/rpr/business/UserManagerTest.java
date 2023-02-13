@@ -91,6 +91,13 @@ class UserManagerTest {
     }
 
     @Test
+    public void testLoginWithEmptyPassword() {
+        assertThrows(ArrangementException.class, () -> {
+           UserManager.login("testuser@example.com", "");
+        }, "Login should throw ArrangementException when password is empty");
+    }
+
+    @Test
     void login() throws ArrangementException {
         User expectedUser = new User(1, "Zlata", "Ohran", "Vakuf", "058930209", "zlata@", "12345678");
 
