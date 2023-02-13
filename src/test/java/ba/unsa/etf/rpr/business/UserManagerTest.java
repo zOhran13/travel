@@ -52,6 +52,7 @@ class UserManagerTest {
 
     @Test
     void isSurnameValid() {
+        assertTrue(UserManager.isNameValid(u.getName()));
     }
 
     @Test
