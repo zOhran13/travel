@@ -20,12 +20,16 @@ public class UserManager {
         return u;
 
     }
-   public static boolean isNameValid(String name) {
-        if(name.equals("") ) return false;
-        char letters [] = name.toCharArray();
+    public static boolean onlyLettersInNameOrSurname(String nameOrSurname) {
+        char letters [] = nameOrSurname.toCharArray();
         for(char c: letters) {
             if(!Character.isLetter(c)) return false;
         }
+        return true;
+
+    }
+   public static boolean isNameValid(String name) {
+        if(name.equals("") ) return false;
         return true;
     }
     public static boolean isPasswordValid(String password) {
@@ -43,10 +47,6 @@ public class UserManager {
     }
     public static boolean isSurnameValid(String surname) {
         if(surname.equals("")) return false;
-        char letters [] = surname.toCharArray();
-        for(char c: letters) {
-            if(!Character.isLetter(c)) return false;
-        }
         return true;
     }
     public static boolean isPhoneNumberValid(String phone) {
@@ -61,6 +61,9 @@ public class UserManager {
         //System.out.println();
         if ((!isNameValid(user.getName())) || (!isPasswordValid(user.getPassword())) || (!isEmailValid(user.getEmail())) || (!isAddressValid(user.getAddress())) || (!isSurnameValid(user.getSurname()))|| (!isPhoneNumberValid(user.getPhoneNumber()))) {
             throw new ArrangementException("Missing some information's");
+        }
+        if(!onlyLettersInNameOrSurname(user.getName()) || !onlyLettersInNameOrSurname(user.getSurname())) {
+            throw new ArrangementException("Only letters in surname or name");
         }
 
 
