@@ -21,7 +21,11 @@ public class UserManager {
 
     }
    public static boolean isNameValid(String name) {
-        if(name.equals("")) return false;
+        if(name.equals("") ) return false;
+        char letters [] = name.toCharArray();
+        for(char c: letters) {
+            if(!Character.isLetter(c)) return false;
+        }
         return true;
     }
     public static boolean isPasswordValid(String password) {
