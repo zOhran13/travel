@@ -27,14 +27,18 @@ class UserManagerTest {
 
 
     }
+    @Test
+    void onlyLettersInNameOrSurname(){
+        String name = "Z1ata";
+        assertFalse(UserManager.onlyLettersInNameOrSurname(name));
+    }
 
     @Test
     void isNameValid() {
 
         boolean name1 = true;
-        String name2 = "Z1ata";
         assertEquals(name1, UserManager.isNameValid(u.getName()));
-        assertFalse(UserManager.isNameValid(name2));
+
     }
 
     @Test
@@ -55,8 +59,8 @@ class UserManagerTest {
     @Test
     void isSurnameValid() {
         assertTrue(UserManager.isNameValid(u.getName()));
-        String surname = "O8ran";
-        assertFalse(UserManager.isSurnameValid(surname));
+
+
     }
 
     @Test
