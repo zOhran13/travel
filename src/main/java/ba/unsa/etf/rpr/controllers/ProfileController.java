@@ -49,6 +49,7 @@ public class ProfileController {
         surnameId.setText(userSurname);
         String userNumber = DaoFactory.userDao().getById(id).getPhoneNumber();
         phoneId.setText(userNumber);
+        System.out.println(userNumber);
 
         ObservableList items = FXCollections.observableArrayList();
 

@@ -7,10 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
@@ -26,7 +23,7 @@ public class RegistrationController {
     public TextField emailId;
     public TextField addressId;
 
-    public TextField passwordId;
+    public PasswordField passwordId;
 
     public void backToLogin(ActionEvent actionEvent) {
         try{

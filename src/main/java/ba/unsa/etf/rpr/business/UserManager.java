@@ -20,7 +20,10 @@ public class UserManager {
     }
 
     public static User register(User user) throws ArrangementException {
-        if (user.getName().equals(null) || user.getPassword().equals(null) || user.getEmail().equals(null) || user.getAddress() == null || user.getSurname() == null || user.getPhoneNumber() == null) {
+
+       /// System.out.println(user.getName().equals(null));
+        //System.out.println();
+        if (user.getName().equals("") || user.getPassword().equals("") || user.getEmail().equals("") || user.getAddress().equals("") || user.getSurname().equals("")|| user.getPhoneNumber().equals("")) {
             throw new ArrangementException("Missing some information's");
         }
 
