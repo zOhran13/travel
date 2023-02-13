@@ -31,8 +31,10 @@ class UserManagerTest {
     @Test
     void isNameValid() {
 
-        boolean ime = true;
-        assertEquals(ime, UserManager.isNameValid(u.getName()));
+        boolean name1 = true;
+        String name2 = "Z1ata";
+        assertEquals(name1, UserManager.isNameValid(u.getName()));
+        assertFalse(UserManager.isNameValid(name2));
     }
 
     @Test
