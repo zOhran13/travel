@@ -37,6 +37,7 @@ class UserManagerTest {
 
     @Test
     void isPasswordValid() {
+        assertTrue(UserManager.isPasswordValid(u.getPassword()));
     }
 
     @Test
