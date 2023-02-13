@@ -57,6 +57,7 @@ class UserManagerTest {
 
     @Test
     void isPhoneNumberValid() {
+        assertTrue(UserManager.isNameValid(u.getPhoneNumber()));
     }
 
     @Test
