@@ -4,6 +4,8 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.ArrangementException;
 
+import javax.management.ListenerNotFoundException;
+
 public class UserManager {
     public User login(String email, String password) throws ArrangementException {
 
@@ -18,12 +20,20 @@ public class UserManager {
         return u;
 
     }
+   public static boolean isNameValid(String name) {
+        if(name.equals("")) return false;
+        return true;
+    }
+    public static boolean isPasswordValid(String password) {
+        if(password.equals("")) return false;
+        return true;
+    }
 
     public static User register(User user) throws ArrangementException {
 
        /// System.out.println(user.getName().equals(null));
         //System.out.println();
-        if (user.getName().equals("") || user.getPassword().equals("") || user.getEmail().equals("") || user.getAddress().equals("") || user.getSurname().equals("")|| user.getPhoneNumber().equals("")) {
+        if ((!isNameValid(user.getName())) || (!isPasswordValid(user.getPassword())) || user.getEmail().equals("") || user.getAddress().equals("") || user.getSurname().equals("")|| user.getPhoneNumber().equals("")) {
             throw new ArrangementException("Missing some information's");
         }
 
