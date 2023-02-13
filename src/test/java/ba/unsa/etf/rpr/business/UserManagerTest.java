@@ -42,6 +42,7 @@ class UserManagerTest {
 
     @Test
     void isEmailValid() {
+        assertTrue(UserManager.isEmailValid(u.getEmail()));
     }
 
     @Test
