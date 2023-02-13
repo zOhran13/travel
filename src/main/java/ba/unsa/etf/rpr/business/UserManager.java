@@ -28,12 +28,30 @@ public class UserManager {
         if(password.equals("")) return false;
         return true;
     }
+    public static boolean isEmailValid(String email) {
+        if(email.equals("")) return false;
+        return true;
+    }
+
+    public static boolean isAddressValid(String address) {
+        if(address.equals("")) return false;
+        return true;
+    }
+    public static boolean isSurnameValid(String surname) {
+        if(surname.equals("")) return false;
+        return true;
+    }
+    public static boolean isPhoneNumberValid(String phone) {
+        if(phone.equals("")) return false;
+        return true;
+    }
+
 
     public static User register(User user) throws ArrangementException {
 
        /// System.out.println(user.getName().equals(null));
         //System.out.println();
-        if ((!isNameValid(user.getName())) || (!isPasswordValid(user.getPassword())) || user.getEmail().equals("") || user.getAddress().equals("") || user.getSurname().equals("")|| user.getPhoneNumber().equals("")) {
+        if ((!isNameValid(user.getName())) || (!isPasswordValid(user.getPassword())) || (!isEmailValid(user.getEmail())) || (!isAddressValid(user.getAddress())) || (!isSurnameValid(user.getSurname()))|| (!isPhoneNumberValid(user.getPhoneNumber()))) {
             throw new ArrangementException("Missing some information's");
         }
 
