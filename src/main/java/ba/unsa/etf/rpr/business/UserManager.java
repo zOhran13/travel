@@ -7,7 +7,7 @@ import ba.unsa.etf.rpr.exceptions.ArrangementException;
 import javax.management.ListenerNotFoundException;
 
 public class UserManager {
-    public User login(String email, String password) throws ArrangementException {
+    public static User login(String email, String password) throws ArrangementException {
 
         if (email == null || password.equals("")) {
             throw new ArrangementException("All fields have to be filled");
