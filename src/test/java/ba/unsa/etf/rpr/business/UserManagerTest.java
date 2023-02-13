@@ -47,6 +47,7 @@ class UserManagerTest {
 
     @Test
     void isAddressValid() {
+        assertTrue(UserManager.isAddressValid(u.getAddress()));
     }
 
     @Test
