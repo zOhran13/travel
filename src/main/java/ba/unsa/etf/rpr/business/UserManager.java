@@ -43,6 +43,10 @@ public class UserManager {
     }
     public static boolean isSurnameValid(String surname) {
         if(surname.equals("")) return false;
+        char letters [] = surname.toCharArray();
+        for(char c: letters) {
+            if(!Character.isLetter(c)) return false;
+        }
         return true;
     }
     public static boolean isPhoneNumberValid(String phone) {
