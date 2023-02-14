@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr;
 
+import ba.unsa.etf.rpr.business.UserManager;
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.ArrangementException;
@@ -13,8 +14,9 @@ public class App
 
         System.out.println("Hello user. Welcome to travel agency. This is a simple app for booking the best travel arrangements.");
         System.out.println("If you don't have a account type 1, if you already have one type 2.");
+
         Scanner scanner = new Scanner(System.in);
-        if(scanner.nextInt() == 2) {
+        if (scanner.nextInt() == 2) {
             String email;
             String password;
             System.out.println("Email: ");
@@ -25,7 +27,7 @@ public class App
 
             User user = DaoFactory.userDao().getByEmail(email);
             //System.out.println(user);
-            while(true) {
+            while (true) {
                 if (user != null && user.getPassword().equals(password)) {
                     System.out.println("Login successful\n");
                     break;
@@ -37,12 +39,53 @@ public class App
                 email = scanner2.next();
                 System.out.println("Password: ");
                 password = scanner2.next();
-                 user = DaoFactory.userDao().getByEmail(email);
+                user = DaoFactory.userDao().getByEmail(email);
 
             }
             whatDoYouWant(user.getId());
         }
+      else  if (scanner.nextInt() == 1) {
+            try {
+                String name;
+                String surname;
+                String address;
+                String phone;
+                String password;
+                String email;
+                System.out.println("Name: ");
+                Scanner nameSc = new Scanner(System.in);
+                name = nameSc.next();
+                System.out.println("Surname: ");
+                Scanner surnameSc = new Scanner(System.in);
+                surname = surnameSc.next();
+                System.out.println("Address: ");
+                Scanner addressSc = new Scanner(System.in);
+                address = addressSc.next();
+                System.out.println("Phone: ");
+                Scanner phoneSc = new Scanner(System.in);
+                phone = phoneSc.next();
+                System.out.println("Email: ");
+                Scanner emailSc = new Scanner(System.in);
+                email = emailSc.next();
+                System.out.println("Password: ");
+                Scanner passwordSc = new Scanner(System.in);
+                password = passwordSc.next();
+                User user = new User();
+                user.setName(name);
+                user.setPhoneNumber(phone);
+                user.setSurname(surname);
+                user.setEmail(email);
+                user.setAddress(address);
+                user.setPassword(password);
+                UserManager.register(user);
+                whatDoYouWant(user.getId());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
     }
+    }
+
     private static void whatDoYouWant(int id){
         System.out.println("Choose one: ");
         System.out.println("1: Show me a list of my reservations");
