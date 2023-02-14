@@ -20,16 +20,24 @@ public class App
             email = scanner1.next();
             System.out.println("Password: ");
             password = scanner1.next();
+
             User user = DaoFactory.userDao().getByEmail(email);
-            if (user != null && user.getPassword().equals(password)){
-                System.out.println("Login successful\n");
-                //break;
+            //System.out.println(user);
+            while(true) {
+                if (user != null && user.getPassword().equals(password)) {
+                    System.out.println("Login successful\n");
+                    break;
+                }
+                System.out.println("Username or password is wrong. Please try again.");
+
+                System.out.println("Email: ");
+                Scanner scanner2 = new Scanner(System.in);
+                email = scanner2.next();
+                System.out.println("Password: ");
+                password = scanner2.next();
+                 user = DaoFactory.userDao().getByEmail(email);
+
             }
-
-
-
         }
-
-
     }
 }
