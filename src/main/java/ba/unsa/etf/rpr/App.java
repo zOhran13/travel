@@ -142,7 +142,22 @@ public class App
 
 
     }
-    private static void deleteReservation(int id) {
+    private static void deleteReservation(int id) throws ArrangementException {
+        List<Reservation> listOfReservations = DaoFactory.reservationDao().reservationsForUser(id);
+        System.out.println("You have "+listOfReservations.size()+" reservations.");
+        if (listOfReservations.isEmpty()){
+            System.out.println("You haven't made any reservations yet!\n");
+
+            return;
+        }
+        for(int i = 0; i<listOfReservations.size(); i++) {
+            System.out.println("- "+(listOfReservations.get(i).toString()));
+        }
+        System.out.println("Type id for arrangement which you want delete.");
+        Scanner scanner = new Scanner(System.in);
+        int selected = scanner.nextInt();
+        DaoFactory.reservationDao().delete(selected);
+
 
 
     }
