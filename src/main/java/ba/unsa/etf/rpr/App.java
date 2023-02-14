@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.business.UserManager;
 import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.domain.Arrangement;
 import ba.unsa.etf.rpr.domain.Reservation;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.ArrangementException;
@@ -120,7 +121,25 @@ public class App
 
 
     }
-    private static void makeAReservation(int id) {
+    private static void makeAReservation(int id) throws ArrangementException {
+        User user = DaoFactory.userDao().getById(id);
+        List<Arrangement> arrangements = DaoFactory.arrangementDao().getAll();
+        for (int i = 0; i<arrangements.size(); i++) {
+            System.out.println(arrangements.get(i).toString());
+        }
+        System.out.println("Type id for arrangement which you want.");
+        Scanner scanner = new Scanner(System.in);
+        int selected = scanner.nextInt();
+        Reservation reservation = new Reservation();
+        java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
+        reservation.setId(1);
+        reservation.setPayment(DaoFactory.arrangementDao().getById(selected).getPrice());
+        reservation.setDate(date);
+        reservation.setUser(user);
+        DaoFactory.reservationDao().add(reservation);
+        System.out.println("You booked this arrangement.");
+        whatDoYouWant(id);
+
 
     }
     private static void deleteReservation(int id) {

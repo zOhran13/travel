@@ -22,7 +22,7 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
             res.setUser(DaoFactory.userDao().getById(rs.getInt("idUser")));
             res.setPayment(rs.getInt("payment"));
             res.setDate(rs.getDate("date"));
-           // res.(rs.getInt("price"));
+           // res.setArrangement(DaoFactory.arrangementDao().getById(rs.getInt("idArrangement")));
             return res;
         } catch (SQLException e) {
             throw new ArrangementException(e.getMessage(), e);
@@ -36,7 +36,10 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
        row.put("id", object.getId());
         row.put("payment", object.getPayment());
         row.put("date", object.getDate());
+        //row.put("place",object.getArrangement());
         row.put("idUser", object.getUser().getId());
+
+
         return row;
     }
 
@@ -58,6 +61,26 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
         }
 
         return reservationsForUser;
+
+    }
+    public  List<Reservation> reservationsForArrangement(int arrangementId) throws ArrangementException {
+        List<Reservation> reservationsForArrangement = new ArrayList<>();
+        String query = "SELECT * FROM Reservation WHERE idArrangement = ?";
+        try{
+            PreparedStatement stmt = getConnection().prepareStatement(query);
+            stmt.setInt(1,arrangementId);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                Reservation result = row2object(rs);
+                reservationsForArrangement.add(result);
+            }
+
+        }
+        catch (Exception e) {
+            throw new ArrangementException(e.getMessage(), e);
+        }
+
+        return reservationsForArrangement;
 
     }
 

@@ -61,7 +61,7 @@ public class Arrangement implements Idable, Serializable {
     @Override
     public String toString() {
         return "Arrangement{" +
-                "id=" + id +
+                "id= " + id +
                 ", arragement=" + arragement +
                 ", description =" + description +
                 ", price=" +price+

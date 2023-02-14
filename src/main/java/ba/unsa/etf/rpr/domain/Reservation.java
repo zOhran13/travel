@@ -11,6 +11,16 @@ public class Reservation implements Idable, Serializable {
     private Date date;
      private User user;
 
+//     private Arrangement arrangement;
+
+//    public Arrangement getArrangement() {
+//        return arrangement;
+//    }
+//
+//    public void setArrangement(Arrangement arrangement) {
+//        this.arrangement = arrangement;
+//    }
+
     public int getId() {
         return id;
     }
@@ -49,7 +59,8 @@ public class Reservation implements Idable, Serializable {
         return "Reservation[" +
                 "id=" + id +
                 ", payment=" + payment+
-                ", date" + date+
+                ", date: " + date+
+               // ", place: "+arrangement+
                 ", user" +user+
                 ']';
     }
