@@ -132,7 +132,7 @@ public class App
         int selected = scanner.nextInt();
         Reservation reservation = new Reservation();
         java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-        reservation.setId(1);
+        reservation.setId(0);
         reservation.setPayment(DaoFactory.arrangementDao().getById(selected).getPrice());
         reservation.setDate(date);
         reservation.setUser(user);
@@ -143,6 +143,7 @@ public class App
 
     }
     private static void deleteReservation(int id) {
+
 
     }
 }
