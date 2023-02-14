@@ -2,9 +2,11 @@ package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.business.UserManager;
 import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.domain.Reservation;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.ArrangementException;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class App
@@ -86,7 +88,7 @@ public class App
     }
     }
 
-    private static void whatDoYouWant(int id){
+    private static void whatDoYouWant(int id) throws ArrangementException {
         System.out.println("Choose one: ");
         System.out.println("1: Show me a list of my reservations");
         System.out.println("2. Make me a reservation");
@@ -96,14 +98,26 @@ public class App
         Scanner scanner = new Scanner(System.in);
         action = scanner.nextInt();
         switch (action){
-            case 1 : listOfReservtionOfaUser(id);
+            case 1 : listOfReservationOfaUser(id);
             case 2 :  makeAReservation(id);
             case 3 : deleteReservation(id);
             case 4 : System.exit(0);
         }
 
     }
-    private static void listOfReservtionOfaUser(int id) {
+    private static void listOfReservationOfaUser(int id) throws ArrangementException {
+        List<Reservation> listOfReservations = DaoFactory.reservationDao().reservationsForUser(id);
+        System.out.println("You have "+listOfReservations.size()+" reservations.");
+        if (listOfReservations.isEmpty()){
+            System.out.println("You haven't made any reservations yet!\n");
+            whatDoYouWant(id);
+            return;
+        }
+        for(int i = 0; i<listOfReservations.size(); i++) {
+            System.out.println("- "+(listOfReservations.get(i).toString()));
+        }
+        whatDoYouWant(id);
+
 
     }
     private static void makeAReservation(int id) {
