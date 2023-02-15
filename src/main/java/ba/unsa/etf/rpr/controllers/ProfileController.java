@@ -96,6 +96,10 @@ public class ProfileController {
 
     }
 
+    /**
+     * When the user selects some reservation and click cancel button this method remove reservation from list and database
+     * @param actionEvent
+     */
     public void removeReservation(ActionEvent actionEvent) {
 
         int selectedIdx = listReservationId.getSelectionModel().getSelectedIndex();
