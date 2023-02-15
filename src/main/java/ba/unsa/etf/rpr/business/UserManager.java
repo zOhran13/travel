@@ -4,6 +4,9 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.ArrangementException;
 
+/**
+ * This class belongs to business layer for User. Checks all action which are connected with user.
+ */
 public class UserManager {
     /**
      *
