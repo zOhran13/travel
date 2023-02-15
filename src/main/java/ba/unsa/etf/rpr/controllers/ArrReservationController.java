@@ -14,7 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
@@ -38,6 +37,14 @@ public class ArrReservationController {
 
 
     private String  arrangement;
+
+    /**
+     *
+     * @param arrangement
+     * @param nameOfUser
+     * @param id
+     * This is constructor
+     */
 
     public ArrReservationController(String arrangement,String nameOfUser,int id) {
         this.arrangement = arrangement;
