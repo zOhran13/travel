@@ -12,7 +12,12 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
     public ReservationDaoSQLImpl() {
         super("Reservation");
     }
-
+    /**
+     * Method that turns data from database to objects
+     * @param rs
+     * @return
+     * @throws ArrangementException
+     */
     @Override
     public Reservation row2object(ResultSet rs)  throws ArrangementException {
         try {
