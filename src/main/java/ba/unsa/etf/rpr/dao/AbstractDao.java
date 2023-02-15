@@ -208,6 +208,12 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         }
 
     }
+
+    /**
+     * Prepare columns for update statement id=?, name=?, ...
+     * @param row
+     * @return
+     */
     private String prepareUpdateParts(Map<String, Object> row){
         StringBuilder columns = new StringBuilder();
 
