@@ -148,6 +148,12 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
 
     }
 
+    /**
+     * Method for updating data
+     * @param item
+     * @return
+     * @throws ArrangementException
+     */
     public T update(T item) throws ArrangementException{
         Map<String, Object> row = object2row(item);
         String updateColumns = prepareUpdateParts(row);
