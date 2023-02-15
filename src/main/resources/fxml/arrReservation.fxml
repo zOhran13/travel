@@ -26,9 +26,9 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-      <ImageView fitHeight="336.0" fitWidth="446.0" opacity="0.34" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="3" GridPane.rowSpan="6">
+      <ImageView fitHeight="380.0" fitWidth="445.0" opacity="0.34" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="3" GridPane.rowSpan="6">
          <image>
-            <Image url="@../img/Reservation.jpg" />
+            <Image url="@../img/Arran.jpg" />
          </image>
       </ImageView>
         <Label fx:id="nameId" GridPane.columnIndex="1">
@@ -55,7 +55,10 @@
         <Label fx:id="priceId" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font name="Arial" size="21.0" />
-         </font></Label>
+         </font>
+         <GridPane.margin>
+            <Insets top="5.0" />
+         </GridPane.margin></Label>
         <Label text="About: " GridPane.rowIndex="2">
          <font>
             <Font name="Candara Light" size="21.0" />
@@ -66,7 +69,10 @@
         <Label fx:id="desId" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="3">
          <font>
             <Font name="Arial Italic" size="12.0" />
-         </font></Label>
+         </font>
+         <GridPane.margin>
+            <Insets top="2.0" />
+         </GridPane.margin></Label>
       <ButtonBar prefHeight="70.0" prefWidth="162.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
         <buttons>
               <Button fx:id="btnReservation" mnemonicParsing="false" onAction="#reservationArr" text="Reserve" />
