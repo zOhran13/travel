@@ -30,15 +30,15 @@ public class HomePageController {
 
     public Label imeId;
 
-    public String ime;
+    public String name;
     public ListView listaId;
     public Button btnChooseId;
 
     public int id;
 
-    public HomePageController(String  ime, int id) {
+    public HomePageController(String name, int id) {
 
-        this.ime = ime;
+        this.name = name;
         this.id = id;
 
     }
@@ -46,7 +46,7 @@ public class HomePageController {
      * Initialize method happens as soon as window is opened and this one set all arrangement on list.
      */
     public void initialize(){
-        imeId.setText(ime);
+        imeId.setText(name);
         //System.out.println(id);
 
 
@@ -78,7 +78,7 @@ public class HomePageController {
     public void goToProfile(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) btnId.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/profile.fxml"));
-        ProfileController cont = new ProfileController(ime,id);
+        ProfileController cont = new ProfileController(name,id);
         fxmlLoader.setController(cont);
         stage.setTitle("Profile");
         stage.setScene(new Scene(fxmlLoader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
@@ -111,7 +111,7 @@ public class HomePageController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/arrReservation.fxml"));
 
 
-            ArrReservationController arrReservationController = new ArrReservationController(selectedItem.toString(),ime,id);
+            ArrReservationController arrReservationController = new ArrReservationController(selectedItem.toString(), name,id);
 
             fxmlLoader.setController(arrReservationController);
 
