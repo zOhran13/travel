@@ -16,6 +16,9 @@ import javafx.stage.Stage;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
+/**
+ * This controller handles everything for login window
+ */
 public class LoginController {
 public Button loginBtn;
     public TextField emailFld;

@@ -20,7 +20,9 @@ import java.util.List;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
-
+/**
+ * This controller handles everything for home page window
+ */
 public class HomePageController {
 
 
