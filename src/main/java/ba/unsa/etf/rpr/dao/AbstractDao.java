@@ -94,7 +94,11 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     public abstract Map<String, Object> object2row(T object);
 
 
-
+    /**
+     * Method for deleting data by ID
+     * @param id
+     * @throws ArrangementException
+     */
     public void delete(int id) throws ArrangementException{
         String sql = "DELETE FROM "+ tableName +" WHERE id = ?";
         try{
