@@ -6,17 +6,21 @@ import ba.unsa.etf.rpr.exceptions.ArrangementException;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * Implements methods from Dao<T> plus methods from ArrangementDao, extends AbstractDao
+ */
 public class ArrangementDaoSQLImpl extends AbstractDao<Arrangement> implements  ArrangementDao {
     //private static ArrangementDaoSQLImpl instance = null;
     public ArrangementDaoSQLImpl() {
         super("Arrangement");
     }
-//    public static ArrangementDaoSQLImpl getInstance(){
-//        if(instance==null)
-//            instance = new ArrangementDaoSQLImpl();
-//        return instance;
-//    }
 
+    /**
+     * Method that turns data from database to objects
+     * @param rs
+     * @return
+     * @throws ArrangementException
+     */
 
 @Override
 public Arrangement row2object(ResultSet rs)  throws ArrangementException {
