@@ -51,6 +51,12 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
         return row;
     }
 
+    /**
+     * Method chooses all reservations from database for one user
+     * @param userId
+     * @return list reservations for user
+     * @throws ArrangementException
+     */
     public  List<Reservation> reservationsForUser(int userId) throws ArrangementException {
         List<Reservation> reservationsForUser = new ArrayList<>();
         String query = "SELECT * FROM Reservation WHERE idUser = ?";
