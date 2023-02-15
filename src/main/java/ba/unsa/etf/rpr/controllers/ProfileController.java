@@ -77,8 +77,11 @@ public class ProfileController {
     }
 
 
-
-
+    /**
+     * This method sets home page window form users profile page
+     * @param actionEvent
+     * @throws IOException
+     */
     public void backHome(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) btnBackId.getScene().getWindow();
         stage.close();
