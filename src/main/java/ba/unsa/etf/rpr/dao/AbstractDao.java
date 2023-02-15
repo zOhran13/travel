@@ -206,6 +206,13 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
             throw new ArrangementException(e.getMessage(), e);
         }
     }
+    /**
+     * Utility for query execution that always return single record
+     * @param query - query that returns single record
+     * @param params - list of params for sql query
+     * @return Object
+     * @throws ArrangementException in case when object is not found
+     */
 
     public T executeQueryUnique(String query, Object[] params) throws ArrangementException {
         List<T> result = executeQuery(query, params);
