@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Implements methods from Dao<T> plus methods from UserDao, extends AbstractDao
+ */
 public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
     public UserDaoSQLImpl() {
         super("User");
@@ -32,7 +35,12 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
     }
 
 
-
+    /**
+     * Method returns one user by id
+     * @param id
+     * @return user
+     * @throws ArrangementException
+     */
     @Override
     public User getById(int id) throws ArrangementException {
         String query = "SELECT * FROM User WHERE id = ?";
@@ -77,7 +85,13 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
         row.put("password",object.getPassword());
         return row;
     }
-   // @Override
+
+    /**
+     * Method return user from database with email. Two users can't have same email.
+     * @param email
+     * @return user
+     * @throws ArrangementException
+     */
     public User getByEmail(String email) throws ArrangementException{
 
         String query = "SELECT * FROM  User  WHERE email = ?";
