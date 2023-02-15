@@ -5,6 +5,9 @@ import ba.unsa.etf.rpr.exceptions.ArrangementException;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * Methods that are needed in every extended class are implemented here
+ */
 
 public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     private static  Connection conn = null;
