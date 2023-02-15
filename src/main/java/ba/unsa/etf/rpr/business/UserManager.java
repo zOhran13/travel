@@ -9,12 +9,11 @@ import ba.unsa.etf.rpr.exceptions.ArrangementException;
  */
 public class UserManager {
     /**
-     *
+     *This method logs user in only if all fields are filled and username and password are correct
      * @param email
      * @param password
      * @return user which is in database
      * @throws ArrangementException
-     * This method logs user in only if all fields are filled and username and password are correct
      */
     public static User login(String email, String password) throws ArrangementException {
 
@@ -31,10 +30,9 @@ public class UserManager {
     }
 
     /**
-     *
+     * This method check is it name or surname has something beside letters
      * @param nameOrSurname
      * @return boolean true or false
-     * This method check is it name or surname has something beside letters
      */
     public static boolean onlyLettersInNameOrSurname(String nameOrSurname) {
         char letters [] = nameOrSurname.toCharArray();
@@ -46,10 +44,9 @@ public class UserManager {
     }
 
     /**
-     *
+     * This method check is it name empty string
      * @param name
      * @return boolean true or false
-     * This method check is it name empty string
      */
 
    public static boolean isNameValid(String name) {
@@ -58,10 +55,9 @@ public class UserManager {
     }
 
     /**
-     *
+     * This method check is it password empty string
      * @param password
      * @return boolean true or false
-     * This method check is it password empty string
      */
         public static boolean isPasswordValid(String password) {
         if(password.equals("")) return false;
@@ -69,10 +65,9 @@ public class UserManager {
     }
 
     /**
-     *
+     * This method check is it email empty string
      * @param email
      * @return boolean true or false
-     * This method check is it email empty string
      */
     public static boolean isEmailValid(String email) {
         if(email.equals("")) return false;
