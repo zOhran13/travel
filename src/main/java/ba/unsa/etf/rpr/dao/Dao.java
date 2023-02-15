@@ -12,7 +12,7 @@ public interface Dao <T>{
     /**
      * Get entity from database base on ID
      * @param id
-     * @return
+     * @return id primary key of entity
      * @throws ArrangementException
      */
     T getById(int id)throws ArrangementException;
@@ -20,11 +20,11 @@ public interface Dao <T>{
     /**
      * Saves entity into database
      * @param item
-     * @return
+     * @return saved item with id field populated
      * @throws ArrangementException
      */
     T add( T item) throws ArrangementException;
-T update(T item) throws ArrangementException;
+
 
     /**
      * Delete entity into database
@@ -32,5 +32,11 @@ T update(T item) throws ArrangementException;
      * @throws ArrangementException
      */
     void delete(int id) throws ArrangementException;
-List<T> getAll() throws ArrangementException;
+
+    /**
+     * Lists all entities from database.
+     * @return List of entities from database
+     * @throws ArrangementException
+     */
+    List<T> getAll() throws ArrangementException;
 }
