@@ -87,6 +87,13 @@ public class UserManager {
         if(address.equals("")) return false;
         return true;
     }
+
+    /**
+     *
+     * @param surname
+     * @return boolean true or false
+     * This method check is it surname empty string
+     */
     public static boolean isSurnameValid(String surname) {
         if(surname.equals("")) return false;
         return true;
