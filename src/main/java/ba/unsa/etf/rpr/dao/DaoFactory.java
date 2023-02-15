@@ -28,9 +28,18 @@ public class DaoFactory {
         return arrangementDao;
     }
 
+    /**
+     * Method needed to access ReservationDao instance
+     * @return
+     */
     public static ReservationDao reservationDao(){
         return reservationDao;
     }
+
+    /**
+     * Method needed to access UserDao instance
+     * @return
+     */
      public static UserDao userDao() {return userDao;}
 
 }
