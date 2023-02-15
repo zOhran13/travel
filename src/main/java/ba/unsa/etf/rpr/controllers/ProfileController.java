@@ -18,6 +18,9 @@ import java.util.List;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
+/**
+ * This controller handles everything for users profile page
+ */
 public class ProfileController {
 
 
@@ -43,6 +46,10 @@ public class ProfileController {
         this.id = id;
     }
 
+    /**
+     * Initialize method happens as soon as window is opened and this one set all information about user on the window and list of users reservations.
+     * @throws ArrangementException
+     */
     public void initialize() throws ArrangementException {
         nameId.setText(name);
         String userSurname = DaoFactory.userDao().getById(id).getSurname();
