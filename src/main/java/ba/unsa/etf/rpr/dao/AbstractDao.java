@@ -64,6 +64,12 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     public T getById(int id) throws ArrangementException {
     return executeQueryUnique("SELECT * FROM "+this.tableName +" WHERE id = ?", new Object[]{id});
 }
+
+    /**
+     * Method for getting all data from certain table
+     * @return
+     * @throws ArrangementException
+     */
     public List<T> getAll() throws ArrangementException {
         String query = "SELECT * FROM "+ tableName;
         List<T> results = new ArrayList<T>();
