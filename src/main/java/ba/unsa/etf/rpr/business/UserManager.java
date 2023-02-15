@@ -53,6 +53,13 @@ public class UserManager {
         if(name.equals("") ) return false;
         return true;
     }
+
+    /**
+     *
+     * @param password
+     * @return boolean true or false
+     * This method check is it password empty string
+     */
         public static boolean isPasswordValid(String password) {
         if(password.equals("")) return false;
         return true;
