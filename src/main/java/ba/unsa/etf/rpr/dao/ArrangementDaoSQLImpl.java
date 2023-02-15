@@ -18,7 +18,7 @@ public class ArrangementDaoSQLImpl extends AbstractDao<Arrangement> implements  
     /**
      * Method that turns data from database to objects
      * @param rs
-     * @return
+     * @return data from database
      * @throws ArrangementException
      */
 
@@ -41,7 +41,7 @@ public Arrangement row2object(ResultSet rs)  throws ArrangementException {
     /**
      * Method that turns objects to data for database
      * @param object
-     * @return
+     * @return row in for database
      */
 
     @Override

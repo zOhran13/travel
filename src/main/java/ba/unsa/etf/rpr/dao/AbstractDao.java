@@ -58,7 +58,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     /**
      * Method for getting data by ID
      * @param id
-     * @return
+     * @return data with given id
      * @throws ArrangementException
      */
     public T getById(int id) throws ArrangementException {
@@ -67,7 +67,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
 
     /**
      * Method for getting all data from certain table
-     * @return
+     * @return all data
      * @throws ArrangementException
      */
     public List<T> getAll() throws ArrangementException {
