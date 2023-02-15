@@ -53,6 +53,10 @@ public class ArrReservationController {
 
     }
 
+    /**
+     * Initialize method happens as soon as window is opened.
+     */
+
 
     public void initialize() {
         String [] des = arrangement.split("About:");
