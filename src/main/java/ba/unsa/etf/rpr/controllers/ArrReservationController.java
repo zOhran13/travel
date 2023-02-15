@@ -103,6 +103,12 @@ public class ArrReservationController {
 
     }
 
+    /**
+     *
+     * @param actionEvent
+     * @throws ArrangementException
+     * This method makes reservation for arrangement which is on window
+     */
     public void reservationArr(ActionEvent actionEvent) throws ArrangementException {
         User user = DaoFactory.userDao().getById(id);
         String [] arrangementArray = arrangement.split(" ");
