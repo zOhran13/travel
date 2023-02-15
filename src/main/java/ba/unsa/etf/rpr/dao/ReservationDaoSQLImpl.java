@@ -63,27 +63,6 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
         return reservationsForUser;
 
     }
-    public  List<Reservation> reservationsForArrangement(int arrangementId) throws ArrangementException {
-        List<Reservation> reservationsForArrangement = new ArrayList<>();
-        String query = "SELECT * FROM Reservation WHERE idArrangement = ?";
-        try{
-            PreparedStatement stmt = getConnection().prepareStatement(query);
-            stmt.setInt(1,arrangementId);
-            ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
-                Reservation result = row2object(rs);
-                reservationsForArrangement.add(result);
-            }
-
-        }
-        catch (Exception e) {
-            throw new ArrangementException(e.getMessage(), e);
-        }
-
-        return reservationsForArrangement;
-
-    }
-
 
 
 }

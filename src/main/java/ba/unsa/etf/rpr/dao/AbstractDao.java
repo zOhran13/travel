@@ -7,21 +7,25 @@ import java.util.*;
 
 
 public abstract class AbstractDao<T extends Idable> implements Dao<T>{
-    private static  Connection konekcija = null;
-    private String nazivTabele;
-    public AbstractDao(String nazivTabele) {
-        this.nazivTabele = nazivTabele;
+    private static  Connection conn = null;
+    private String tableName;
+    public AbstractDao(String tableName) {
+        this.tableName = tableName;
         createConnection();
     }
+
+    /**
+     *
+     */
     private static void createConnection(){
-        if(AbstractDao.konekcija==null) {
+        if(AbstractDao.conn ==null) {
             try {
                 Properties p = new Properties();
                 p.load(ClassLoader.getSystemResource("database.properties").openStream());
                 String url = p.getProperty("url");
                 String username = p.getProperty("username");
                 String password = p.getProperty("password");
-                AbstractDao.konekcija = DriverManager.getConnection(url, username, password);
+                AbstractDao.conn = DriverManager.getConnection(url, username, password);
             } catch (Exception e) {
                 e.printStackTrace();
             }finally {
@@ -29,7 +33,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
                     @Override
                     public void run(){
                         try {
-                            konekcija.close();
+                            conn.close();
                         } catch (SQLException e) {
                             e.printStackTrace();
                         }
@@ -40,14 +44,14 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     }
 
     public static Connection getConnection(){
-        return AbstractDao.konekcija;
+        return AbstractDao.conn;
     }
 
 public T getById(int id) throws ArrangementException {
-    return executeQueryUnique("SELECT * FROM "+this.nazivTabele+" WHERE id = ?", new Object[]{id});
+    return executeQueryUnique("SELECT * FROM "+this.tableName +" WHERE id = ?", new Object[]{id});
 }
     public List<T> getAll() throws ArrangementException {
-        String query = "SELECT * FROM "+ nazivTabele;
+        String query = "SELECT * FROM "+ tableName;
         List<T> results = new ArrayList<T>();
         try{
             PreparedStatement stmt = getConnection().prepareStatement(query);
@@ -72,7 +76,7 @@ public T getById(int id) throws ArrangementException {
 
 
     public void delete(int id) throws ArrangementException{
-        String sql = "DELETE FROM "+nazivTabele+" WHERE id = ?";
+        String sql = "DELETE FROM "+ tableName +" WHERE id = ?";
         try{
             PreparedStatement stmt = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setObject(1, id);
@@ -87,7 +91,7 @@ public T getById(int id) throws ArrangementException {
         Map.Entry<String, String> columns = prepareInsertParts(row);
 
         StringBuilder builder = new StringBuilder();
-        builder.append("INSERT INTO ").append(nazivTabele);
+        builder.append("INSERT INTO ").append(tableName);
         builder.append(" (").append(columns.getKey()).append(") ");
         builder.append("VALUES (").append(columns.getValue()).append(")");
 
@@ -118,7 +122,7 @@ public T getById(int id) throws ArrangementException {
         String updateColumns = prepareUpdateParts(row);
         StringBuilder builder = new StringBuilder();
         builder.append("UPDATE ")
-                .append(nazivTabele)
+                .append(tableName)
                 .append(" SET ")
                 .append(updateColumns)
                 .append(" WHERE id = ?");
