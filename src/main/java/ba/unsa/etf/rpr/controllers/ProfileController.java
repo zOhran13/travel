@@ -34,9 +34,6 @@ public class ProfileController {
 
     public int id;
 
-
-    public Label surnameId;
-
     public Label phoneId;
 
 
@@ -51,12 +48,13 @@ public class ProfileController {
      * @throws ArrangementException
      */
     public void initialize() throws ArrangementException {
-        nameId.setText(name);
         String userSurname = DaoFactory.userDao().getById(id).getSurname();
-        surnameId.setText(userSurname);
+        nameId.setText(name+" "+userSurname);
+       // String userSurname = DaoFactory.userDao().getById(id).getSurname();
+        //surnameId.setText(userSurname);
         String userNumber = DaoFactory.userDao().getById(id).getPhoneNumber();
         phoneId.setText(userNumber);
-        System.out.println(userNumber);
+        //System.out.println(userNumber);
 
         ObservableList items = FXCollections.observableArrayList();
 
