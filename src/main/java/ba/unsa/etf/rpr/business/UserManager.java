@@ -76,6 +76,13 @@ public class UserManager {
         return true;
     }
 
+    /**
+     *
+     * @param address
+     * @return boolean true or false
+     * This method check is it password email string
+     */
+
     public static boolean isAddressValid(String address) {
         if(address.equals("")) return false;
         return true;
