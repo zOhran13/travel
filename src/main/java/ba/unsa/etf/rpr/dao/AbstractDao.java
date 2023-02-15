@@ -55,7 +55,13 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         return AbstractDao.conn;
     }
 
-public T getById(int id) throws ArrangementException {
+    /**
+     * Method for getting data by ID
+     * @param id
+     * @return
+     * @throws ArrangementException
+     */
+    public T getById(int id) throws ArrangementException {
     return executeQueryUnique("SELECT * FROM "+this.tableName +" WHERE id = ?", new Object[]{id});
 }
     public List<T> getAll() throws ArrangementException {
