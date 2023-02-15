@@ -16,7 +16,9 @@ public class User implements Idable, Serializable {
 
     private String password;
 
-
+    /**
+     * Constructor with null parameters
+     */
     public User() {
     }
 
@@ -85,6 +87,10 @@ public class User implements Idable, Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+    /**
+     * This is method that turns User to string object
+     * @return string object
+     */
     @Override
     public String toString() {
         return "User[" +
