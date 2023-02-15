@@ -69,7 +69,7 @@ public class UserManager {
      *
      * @param email
      * @return boolean true or false
-     * This method check is it password email string
+     * This method check is it email empty string
      */
     public static boolean isEmailValid(String email) {
         if(email.equals("")) return false;
@@ -80,7 +80,7 @@ public class UserManager {
      *
      * @param address
      * @return boolean true or false
-     * This method check is it password email string
+     * This method check is it address empty string
      */
 
     public static boolean isAddressValid(String address) {
