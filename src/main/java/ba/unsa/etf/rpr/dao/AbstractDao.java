@@ -110,6 +110,13 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         }
     }
 
+    /**
+     * Method for adding data in database
+     * @param item
+     * @return
+     * @throws ArrangementException
+     */
+
     public T add(T item) throws ArrangementException{
         Map<String, Object> row = object2row(item);
         Map.Entry<String, String> columns = prepareInsertParts(row);
