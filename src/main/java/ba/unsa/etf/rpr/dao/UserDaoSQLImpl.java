@@ -15,7 +15,13 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
     public UserDaoSQLImpl() {
         super("User");
     }
-
+    /**
+     * Method that turns data from database to objects
+     * @param rs
+     * @return
+     * @throws ArrangementException
+     *
+     */
     @Override
     public User row2object(ResultSet rs) throws ArrangementException{
         User user = new User();
