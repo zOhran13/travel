@@ -4,9 +4,15 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.ArrangementException;
 
-import javax.management.ListenerNotFoundException;
-
 public class UserManager {
+    /**
+     *
+     * @param email
+     * @param password
+     * @return user which is in database
+     * @throws ArrangementException
+     * This method logs user in only if all fields are filled and username and password are correct
+     */
     public static User login(String email, String password) throws ArrangementException {
 
         if (email == null || password.equals("")) {
@@ -20,6 +26,13 @@ public class UserManager {
         return u;
 
     }
+
+    /**
+     *
+     * @param nameOrSurname
+     * @return boolean true or false
+     * This method check is it name or surname has something beside letters
+     */
     public static boolean onlyLettersInNameOrSurname(String nameOrSurname) {
         char letters [] = nameOrSurname.toCharArray();
         for(char c: letters) {
