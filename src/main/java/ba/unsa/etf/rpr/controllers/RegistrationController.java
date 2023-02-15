@@ -49,6 +49,10 @@ public class RegistrationController {
 
     }
 
+    /**
+     * This method adds new user in database if all information are correct
+     * @param actionEvent
+     */
     public void registrationForUser(ActionEvent actionEvent) {
         try {
             User u = new User();
