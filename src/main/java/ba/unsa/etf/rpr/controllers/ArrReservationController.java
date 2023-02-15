@@ -42,11 +42,10 @@ public class ArrReservationController {
     private String  arrangement;
 
     /**
-     *
+     * This is constructor
      * @param arrangement
      * @param nameOfUser
      * @param id
-     * This is constructor
      */
 
     public ArrReservationController(String arrangement,String nameOfUser,int id) {
@@ -74,9 +73,8 @@ public class ArrReservationController {
     }
 
     /**
-     *
-     * @param actionEvent
      * This method returns user from reservation window to home page.
+     * @param actionEvent
      */
 
     public void backToHomePage(ActionEvent actionEvent){
@@ -107,10 +105,9 @@ public class ArrReservationController {
     }
 
     /**
-     *
+     * This method makes reservation for arrangement which is on window
      * @param actionEvent
      * @throws ArrangementException
-     * This method makes reservation for arrangement which is on window
      */
     public void reservationArr(ActionEvent actionEvent) throws ArrangementException {
         User user = DaoFactory.userDao().getById(id);
