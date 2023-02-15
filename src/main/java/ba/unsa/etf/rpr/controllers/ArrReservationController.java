@@ -70,6 +70,12 @@ public class ArrReservationController {
 
     }
 
+    /**
+     *
+     * @param actionEvent
+     * This method returns user from reservation window to home page.
+     */
+
     public void backToHomePage(ActionEvent actionEvent){
         try {
             Stage stage = (Stage) btnCancelId.getScene().getWindow();
