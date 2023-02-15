@@ -75,10 +75,9 @@ public class UserManager {
     }
 
     /**
-     *
+     * This method check is it address empty string
      * @param address
      * @return boolean true or false
-     * This method check is it address empty string
      */
 
     public static boolean isAddressValid(String address) {
@@ -87,10 +86,9 @@ public class UserManager {
     }
 
     /**
-     *
+     * This method check is it surname empty string
      * @param surname
      * @return boolean true or false
-     * This method check is it surname empty string
      */
     public static boolean isSurnameValid(String surname) {
         if(surname.equals("")) return false;
@@ -98,10 +96,10 @@ public class UserManager {
     }
 
     /**
-     *
+     * This method check is it phoneNumber empty string
      * @param phone
      * @return boolean true or false
-     * This method check is it phoneNumber empty string
+
      */
     public static boolean isPhoneNumberValid(String phone) {
         if(phone.equals("")) return false;
@@ -109,11 +107,10 @@ public class UserManager {
     }
 
     /**
-     *
+     * This method adds user only if his username and password are correct
      * @param user
      * @return
      * @throws ArrangementException
-     * This method adds user only if his username and password are correct
      */
     public static User register(User user) throws ArrangementException {
 
