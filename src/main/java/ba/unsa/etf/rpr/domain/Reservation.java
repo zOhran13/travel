@@ -62,6 +62,12 @@ public class Reservation implements Idable, Serializable {
                 ", user" +user+
                 ']';
     }
+
+    /**
+     * This method checks is it two reservation the same
+     * @param o
+     * @return true or false
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

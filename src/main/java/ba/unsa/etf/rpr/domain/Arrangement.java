@@ -73,6 +73,12 @@ public class Arrangement implements Idable, Serializable {
                 ", reservations="+reservation+
                 '}';
     }
+
+    /**
+     * This method checks is it two arrangement the same
+     * @param o
+     * @return true or false
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
