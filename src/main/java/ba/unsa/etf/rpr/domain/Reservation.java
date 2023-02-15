@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 
 /**
- * Domain Javabean class Reservation with all attributes needed for room information such as id, payment, date, user.
+ * Domain Javabean class Reservation with all attributes needed for reservation information such as id, payment, date, user.
  * Also, setters, getters for each attribute
  */
 public class Reservation implements Idable, Serializable {

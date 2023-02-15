@@ -2,7 +2,10 @@ package ba.unsa.etf.rpr.domain;
 
 import java.io.Serializable;
 import java.util.Objects;
-
+/**
+ * Domain Javabean class User with all attributes needed for user information such as id, name, surname, address phoneNumber, password and email
+ * Also, setters, getters for each attribute
+ */
 public class User implements Idable, Serializable {
     private int id;
     private String name;
@@ -12,6 +15,7 @@ public class User implements Idable, Serializable {
     private String email;
 
     private String password;
+
 
     public User() {
     }

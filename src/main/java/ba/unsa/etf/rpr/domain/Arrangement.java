@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * Domain Javabean class Arrangement with all attributes needed for room information such as id, price, arrangement, description and transportation
+ * Domain Javabean class Arrangement with all attributes needed for arrangement information such as id, price, arrangement, description and transportation
  * Also, setters, getters for each attribute
  */
 public class Arrangement implements Idable, Serializable {
