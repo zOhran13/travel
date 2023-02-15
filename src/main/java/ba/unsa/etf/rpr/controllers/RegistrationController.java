@@ -12,6 +12,9 @@ import javafx.stage.Stage;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
+/**
+ * This controller handles everything for users registration page
+ */
 public class RegistrationController {
     
     public Button btnCancelId;
@@ -25,6 +28,10 @@ public class RegistrationController {
 
     public PasswordField passwordId;
 
+    /**
+     * This method returns user from registration page to log in
+     * @param actionEvent
+     */
     public void backToLogin(ActionEvent actionEvent) {
         try{
             Stage stage = (Stage) btnCancelId.getScene().getWindow();
