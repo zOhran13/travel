@@ -98,6 +98,13 @@ public class UserManager {
         if(surname.equals("")) return false;
         return true;
     }
+
+    /**
+     *
+     * @param phone
+     * @return boolean true or false
+     * This method check is it phoneNumber empty string
+     */
     public static boolean isPhoneNumberValid(String phone) {
         if(phone.equals("")) return false;
         return true;
