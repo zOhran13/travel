@@ -38,6 +38,12 @@ public Arrangement row2object(ResultSet rs)  throws ArrangementException {
 
 }
 
+    /**
+     * Method that turns objects to data for database
+     * @param object
+     * @return
+     */
+
     @Override
     public Map<String, Object> object2row(Arrangement object) {
         Map<String, Object> row = new TreeMap<String, Object>();
