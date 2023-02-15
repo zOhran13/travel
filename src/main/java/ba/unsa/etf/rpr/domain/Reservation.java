@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * Domain Javabean class Reservation with all attributes needed for room information such as id, payment, date, user.
+ * Also, setters, getters for each attribute
+ */
 public class Reservation implements Idable, Serializable {
 
     private int id;
@@ -45,6 +49,11 @@ public class Reservation implements Idable, Serializable {
     public Date getDate() {
         return date;
     }
+
+    /**
+     * This is method that turns Reservation to string object
+     * @return string object
+     */
     public String toString() {
         return "Reservation[" +
                 "id=" + id +
