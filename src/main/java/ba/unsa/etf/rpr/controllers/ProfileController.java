@@ -76,7 +76,7 @@ public class ProfileController {
 
 
     /**
-     * This method sets home page window form users profile page
+     * This method sets home page window from users profile page
      * @param actionEvent
      * @throws IOException
      */
