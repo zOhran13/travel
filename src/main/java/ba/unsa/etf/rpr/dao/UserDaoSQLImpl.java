@@ -18,7 +18,7 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
     /**
      * Method that turns data from database to objects
      * @param rs
-     * @return
+     * @return user from database row
      * @throws ArrangementException
      *
      */
@@ -42,7 +42,7 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
 
 
     /**
-     * Method returns one user by id
+     * Method returns user by id
      * @param id
      * @return user
      * @throws ArrangementException
@@ -78,7 +78,11 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
 
     }
 
-
+    /**
+     * Method that turns user to data for database
+     * @param object
+     * @return row for database
+     */
     @Override
     public Map<String, Object> object2row(User object) {
         Map<String, Object> row = new TreeMap<String, Object>();
