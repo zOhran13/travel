@@ -17,6 +17,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
+/**
+ * Test for make reservation
+ */
 class ArrReservationControllerTest {
     private List<Reservation> res = new ArrayList<>();
     //String arrangement = ""
@@ -25,6 +28,10 @@ class ArrReservationControllerTest {
 
     private ArrReservationController reservationController = new ArrReservationController(" ",user.getName(),user.getId());
 
+    /**
+     * Mockito test which check method for reservation
+     * @throws ArrangementException
+     */
     @Test
     void reservationArr() throws ArrangementException {
         java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
