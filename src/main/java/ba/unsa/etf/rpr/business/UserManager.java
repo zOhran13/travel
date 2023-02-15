@@ -41,11 +41,19 @@ public class UserManager {
         return true;
 
     }
+
+    /**
+     *
+     * @param name
+     * @return boolean true or false
+     * This method check is it name empty string
+     */
+
    public static boolean isNameValid(String name) {
         if(name.equals("") ) return false;
         return true;
     }
-    public static boolean isPasswordValid(String password) {
+        public static boolean isPasswordValid(String password) {
         if(password.equals("")) return false;
         return true;
     }
