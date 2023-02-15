@@ -181,6 +181,13 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         }
 
     }
+    /**
+     * Utility method for executing any kind of query
+     * @param query - SQL query
+     * @param params - params for query
+     * @return List of objects from database
+     * @throws ArrangementException in case of error with db
+     */
     public List<T> executeQuery(String query, Object[] params) throws ArrangementException {
         try {
             PreparedStatement stmt = getConnection().prepareStatement(query);
@@ -199,6 +206,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
             throw new ArrangementException(e.getMessage(), e);
         }
     }
+
     public T executeQueryUnique(String query, Object[] params) throws ArrangementException {
         List<T> result = executeQuery(query, params);
         if (result != null && result.size() == 1){
