@@ -73,7 +73,7 @@ public class HomePageController {
      *
      * @param actionEvent
      * @throws IOException
-     * This method close this window and open profile window for user
+     * This method close this window and opens profile window for user
      */
     public void goToProfile(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) btnId.getScene().getWindow();
@@ -87,6 +87,12 @@ public class HomePageController {
 
     }
 
+    /**
+     *
+     * @param actionEvent
+     * @throws IOException
+     * Method opens new window and shows information for arrangement which is chosen
+     */
 
     public void chooseArr(ActionEvent actionEvent) throws IOException {
         int selectedIdx = listaId.getSelectionModel().getSelectedIndex();
