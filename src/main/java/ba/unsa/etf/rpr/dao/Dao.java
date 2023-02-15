@@ -16,8 +16,21 @@ public interface Dao <T>{
      * @throws ArrangementException
      */
     T getById(int id)throws ArrangementException;
-T add( T item) throws ArrangementException;
+
+    /**
+     * Saves entity into database
+     * @param item
+     * @return
+     * @throws ArrangementException
+     */
+    T add( T item) throws ArrangementException;
 T update(T item) throws ArrangementException;
-void delete(int id) throws ArrangementException;
+
+    /**
+     * Delete entity into database
+     * @param id
+     * @throws ArrangementException
+     */
+    void delete(int id) throws ArrangementException;
 List<T> getAll() throws ArrangementException;
 }
