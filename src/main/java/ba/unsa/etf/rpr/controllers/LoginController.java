@@ -62,6 +62,11 @@ public Button loginBtn;
         }
     }
 
+    /**
+     * This method opens new window for registration
+     * @param actionEvent
+     */
+
     public void register(ActionEvent actionEvent) {
         try {
             Stage stage = (Stage) signUpId.getScene().getWindow();
