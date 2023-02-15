@@ -4,11 +4,12 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- *
+ * Domain Javabean class Arrangement with all attributes needed for room information such as id, price, arrangement, description and transportation
+ * Also, setters, getters for each attribute
  */
 public class Arrangement implements Idable, Serializable {
     private int id;
-    private String arragement;
+    private String arrangement;
     private String description;
     private int price;
     private String transportation;
@@ -19,16 +20,16 @@ public class Arrangement implements Idable, Serializable {
         return id;
     }
 
-    public String getArragement() {
-        return arragement;
+    public String getArrangement() {
+        return arrangement;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setArragement(String arragement) {
-        this.arragement = arragement;
+    public void setArrangement(String arrangement) {
+        this.arrangement = arrangement;
     }
 
     public void setDescription(String description) {
@@ -56,13 +57,16 @@ public class Arrangement implements Idable, Serializable {
         return transportation;
     }
 
-
+    /**
+     * This is method that turns Arrangement to string object
+     * @return string object
+     */
 
     @Override
     public String toString() {
         return "Arrangement{" +
                 "id= " + id +
-                ", arragement=" + arragement +
+                ", arragement=" + arrangement +
                 ", description =" + description +
                 ", price=" +price+
                 ", transportation="+transportation+
@@ -79,6 +83,6 @@ public class Arrangement implements Idable, Serializable {
     }
     @Override
     public int hashCode() {
-        return Objects.hash(id, arragement, description, price, transportation, reservation);
+        return Objects.hash(id, arrangement, description, price, transportation, reservation);
     }
 }

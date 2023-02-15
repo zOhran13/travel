@@ -5,7 +5,6 @@ import ba.unsa.etf.rpr.domain.Arrangement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 
 
 import javafx.fxml.FXMLLoader;
@@ -59,7 +58,7 @@ public class HomePageController {
             if(!arrangementsList.isEmpty()){
                 for(int i = 0; i < arrangementsList.size(); i++){
 
-                    items.add("Where: "+ arrangementsList.get(i).getArragement()+ " "+"Price: " + arrangementsList.get(i).getPrice() + "$ "+"About: " + arrangementsList.get(i).getDescription());
+                    items.add("Where: "+ arrangementsList.get(i).getArrangement()+ " "+"Price: " + arrangementsList.get(i).getPrice() + "$ "+"About: " + arrangementsList.get(i).getDescription());
 
 
                 }
