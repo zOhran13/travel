@@ -65,11 +65,19 @@ class UserManagerTest {
         mockedFactory.close();
 
     }
+
+    /**
+     * Test for validation name and surname
+     */
     @Test
     void onlyLettersInNameOrSurname(){
         String name = "Z1ata";
         assertFalse(UserManager.onlyLettersInNameOrSurname(name));
     }
+
+    /**
+     * Test checks method for validation name
+     */
 
     @Test
     void isNameValid() {
@@ -79,20 +87,32 @@ class UserManagerTest {
 
     }
 
+    /**
+     * Test checks method for validation password
+     */
+
     @Test
     void isPasswordValid() {
         assertTrue(UserManager.isPasswordValid(u.getPassword()));
     }
-
+    /**
+     * Test checks method for validation email
+     */
     @Test
     void isEmailValid() {
         assertTrue(UserManager.isEmailValid(u.getEmail()));
     }
+    /**
+     * Test checks method for validation address
+     */
 
     @Test
     void isAddressValid() {
         assertTrue(UserManager.isAddressValid(u.getAddress()));
     }
+    /**
+     * Test checks method for validation surname
+     */
 
     @Test
     void isSurnameValid() {
@@ -100,31 +120,41 @@ class UserManagerTest {
 
 
     }
+    /**
+     * Test checks method for validation phone number
+     */
 
     @Test
     void isPhoneNumberValid() {
         assertTrue(UserManager.isNameValid(u.getPhoneNumber()));
     }
-
+    /**
+     * Test checks method for validation password
+     */
     @Test
     public void testLoginWithEmptyPassword() {
         assertThrows(ArrangementException.class, () -> {
-           UserManager.login("testuser@example.com", "");
+           UserManager.login("zlataohran@gmail.com", "");
         }, "Login should throw ArrangementException when password is empty");
     }
+
+    /**
+     * This test checks method for login
+     * @throws ArrangementException
+     */
 
     @Test
     void login() throws ArrangementException {
         User expectedUser = new User(1, "Zlata", "Ohran", "Vakuf", "058930209", "zlata@", "12345678");
 
         UserDao userDao = Mockito.mock(UserDao.class);
-        Mockito.when(userDao.getByEmail("testuser@example.com")).thenReturn(expectedUser);
+        Mockito.when(userDao.getByEmail("zlataohran@gmail.com")).thenReturn(expectedUser);
 
         DaoFactory daoFactory = Mockito.mock(DaoFactory.class);
         when(usersDaoSQLMock.add(Mockito.any(User.class))).thenReturn(expectedUser);
 
         assertThrows(ArrangementException.class, () -> {
-           UserManager.login("testuser@example.com", "incorrectpassword");
+           UserManager.login("zlataohran@gmail.com", "incorrectpassword");
         }, "Login should throw ArrangementException when password is incorrect");
     }
 
