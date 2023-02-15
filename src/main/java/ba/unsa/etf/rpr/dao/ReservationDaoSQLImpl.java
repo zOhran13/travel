@@ -8,6 +8,9 @@ import java.io.FileReader;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * Implements methods from Dao<T> plus methods from ReservationDao, extends AbstractDao
+ */
 public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements ReservationDao{
     public ReservationDaoSQLImpl() {
         super("Reservation");
