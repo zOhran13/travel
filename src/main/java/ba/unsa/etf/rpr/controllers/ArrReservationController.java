@@ -17,6 +17,9 @@ import javafx.stage.Stage;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
+/**
+ * This controller handles everything for home reservation window
+ */
 public class ArrReservationController {
     public Label nameId;
     public Label priceId;
