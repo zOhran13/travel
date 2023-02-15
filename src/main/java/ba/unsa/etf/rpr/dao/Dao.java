@@ -5,7 +5,7 @@ import ba.unsa.etf.rpr.exceptions.ArrangementException;
 import java.util.List;
 
 /**
- * Dao interface extend by ArrangementDao, ReservationDao, UsersDao
+ * Dao interface extend by ArrangementDao, ReservationDao, UserDao
  * @param <T>
  */
 public interface Dao <T>{
