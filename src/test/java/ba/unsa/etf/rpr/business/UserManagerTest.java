@@ -13,8 +13,15 @@ import org.mockito.Mockito;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
+/**
+ * Test for class UserManager
+ */
 class UserManagerTest {
     User u = new User();
+
+    /**
+     * This happens before each test below and sets user
+     */
     @BeforeEach
             void setUp() {
         //User u = new User();
@@ -30,11 +37,20 @@ class UserManagerTest {
         usersDaoMock = Mockito.mock(UserDao.class);
 
     }
+
+    /**
+     * user dao instance
+     */
     private UserDao usersDaoMock;
     private UserManager userService;
     private UserDaoSQLImpl usersDaoSQLMock = Mockito.mock(UserDaoSQLImpl.class);
 
     private UserManager userManager = new UserManager();
+
+    /**
+     * This method is testing registration
+     * @throws ArrangementException
+     */
     @Test
     void register() throws ArrangementException {
         User user = new User(1, "Zlata", "Ohran", "Vakuf", "058930209", "zlata@", "12345678");
