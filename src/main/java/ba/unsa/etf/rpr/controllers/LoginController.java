@@ -26,6 +26,11 @@ public Button loginBtn;
     public Button signUpId;
     User u = new User();
     UserManager userManager = new UserManager();
+
+    /**
+     * This method shows home page when the user login successful
+     * @param event
+     */
     public void showHomePage(ActionEvent event){
 
 
