@@ -12,13 +12,18 @@ import java.util.*;
 public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     private static  Connection conn = null;
     private String tableName;
+
+    /**
+     * Create connection for one table
+     * @param tableName
+     */
     public AbstractDao(String tableName) {
         this.tableName = tableName;
         createConnection();
     }
 
     /**
-     *
+     * Create connection to database
      */
     private static void createConnection(){
         if(AbstractDao.conn ==null) {
