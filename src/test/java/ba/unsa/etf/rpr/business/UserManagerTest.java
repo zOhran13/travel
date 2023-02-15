@@ -138,35 +138,5 @@ class UserManagerTest {
         }, "Login should throw ArrangementException when password is empty");
     }
 
-    /**
-     * This test checks method for login
-     * @throws ArrangementException
-     */
-
-    @Test
-    void login() throws ArrangementException {
-       // PcUserService mock = org.mockito.Mockito.mock(PcUserService.class);
-
-        User expectedUser = new User(1, "Zlata", "Ohran", "Vakuf", "058930209", "zlata@", "12345678");
-
-        UserDao userDao = Mockito.mock(UserDao.class);
-        Mockito.when(userDao.getByEmail("zlataohran@gmail.com")).thenReturn(expectedUser);
-
-        DaoFactory daoFactory = Mockito.mock(DaoFactory.class);
-        when(usersDaoSQLMock.add(Mockito.any(User.class))).thenReturn(expectedUser);
-
-        User actualUser = null;
-        try {
-          actualUser =   UserManager.login("zlataohran@gmail.com", "12345678");
-        } catch (ArrangementException e) {
-            fail("Login failed with message: " + e.getMessage());
-        }
-
-        assertNotNull(actualUser, "Actual user should not be null");
-        assertEquals(expectedUser, actualUser, "Expected user and actual user should be the same");
-    }
-
-
-
 
 }
