@@ -110,7 +110,13 @@ public class UserManager {
         return true;
     }
 
-
+    /**
+     *
+     * @param user
+     * @return
+     * @throws ArrangementException
+     * This method adds user only if his username and password are correct
+     */
     public static User register(User user) throws ArrangementException {
 
        /// System.out.println(user.getName().equals(null));
