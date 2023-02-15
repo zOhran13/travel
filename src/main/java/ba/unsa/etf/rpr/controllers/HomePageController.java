@@ -41,7 +41,9 @@ public class HomePageController {
         this.id = id;
 
     }
-
+    /**
+     * Initialize method happens as soon as window is opened and this one set all arrangement on list.
+     */
     public void initialize(){
         imeId.setText(ime);
         //System.out.println(id);
@@ -67,6 +69,12 @@ public class HomePageController {
 
     }
 
+    /**
+     *
+     * @param actionEvent
+     * @throws IOException
+     * This method close this window and open profile window for user
+     */
     public void goToProfile(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) btnId.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/profile.fxml"));
