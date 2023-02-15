@@ -99,7 +99,6 @@ public class UserManager {
      * This method check is it phoneNumber empty string
      * @param phone
      * @return boolean true or false
-
      */
     public static boolean isPhoneNumberValid(String phone) {
         if(phone.equals("")) return false;
