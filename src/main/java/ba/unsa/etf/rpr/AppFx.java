@@ -21,7 +21,7 @@ public class AppFx extends Application {
         LoginController loginController = new LoginController();
         fxmlLoader.setController(loginController);
         Parent root = fxmlLoader.load();
-        stage.getIcons().add(new Image("C:\\Users\\naimm\\Desktop\\travel\\travel\\src\\main\\resources\\img\\travel-luggage.png"));
+       // stage.getIcons().add(new Image("C:\\Users\\naimm\\Desktop\\travel\\travel\\src\\main\\resources\\img\\travel-luggage.png"));
         stage.setTitle("Hello user");
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.setResizable(false);
