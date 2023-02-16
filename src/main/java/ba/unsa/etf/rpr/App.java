@@ -19,7 +19,8 @@ public class App
         System.out.println("If you don't have a account type 1, if you already have one type 2.");
 
         Scanner scanner = new Scanner(System.in);
-        if (scanner.nextInt() == 2) {
+        int type = scanner.nextInt();
+        if (type == 2) {
             String email;
             String password;
             System.out.println("Email: ");
@@ -47,7 +48,7 @@ public class App
             }
             whatDoYouWant(user.getId());
         }
-      else  if (scanner.nextInt() == 1) {
+      else  if (type == 1) {
             try {
                 String name;
                 String surname;
